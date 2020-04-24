@@ -11,7 +11,7 @@ dependencies = [
   { image = "gcr.io/paketo-buildpacks/image-labels:0.0.0" },
   { image = "gcr.io/paketo-buildpacks/jmx:0.0.0" },
   { image = "gcr.io/paketo-buildpacks/maven:0.0.0" },
-  { image = "gcr.io/paketo-buildpacks/procfile:0.0.0" },
+  { image = "gcr.io/paketo-buildpacks/procfile:1.3.0" },
   { image = "gcr.io/paketo-buildpacks/sbt:0.0.0" },
   { image = "gcr.io/paketo-buildpacks/spring-boot:0.0.0" },
 ]
