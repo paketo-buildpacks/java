@@ -48,7 +48,6 @@ group = [
 ]
 
 [metadata]
-pre-package   = "scripts/build.sh"
 include-files = [
   "LICENSE",
   "NOTICE",
