@@ -1,0 +1,57 @@
+# Copyright 2018-2020 the original author or authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+api = "0.2"
+
+[buildpack]
+id       = "paketo-buildpacks/java"
+name     = "Paketo Java Buildpack"
+version  = "{{.version}}"
+homepage = "https://github.com/paketo-buildpacks/java"
+
+[[order]]
+group = [
+
+### Order is strictly enforced
+  { id = "paketo-buildpacks/bellsoft-liberica",          optional = true },
+  { id = "paketo-buildpacks/gradle",                     optional = true },
+  { id = "paketo-buildpacks/maven",                      optional = true },
+  { id = "paketo-buildpacks/sbt",                        optional = true },
+
+### Order determines precedence
+  { id = "paketo-buildpacks/executable-jar",             optional = true },
+  { id = "paketo-buildpacks/apache-tomcat",              optional = true },
+  { id = "paketo-buildpacks/dist-zip",                   optional = true },
+  { id = "paketo-buildpacks/procfile",                   optional = true },
+
+### Order does not matter
+  { id = "paketo-buildpacks/azure-application-insights", optional = true },
+  { id = "paketo-buildpacks/debug",                      optional = true },
+  { id = "paketo-buildpacks/google-stackdriver",         optional = true },
+  { id = "paketo-buildpacks/jmx",                        optional = true },
+  { id = "paketo-buildpacks/spring-boot",                optional = true },
+
+### Order is strictly enforced
+  { id = "paketo-buildpacks/encrypt-at-rest",            optional = true },
+  { id = "paketo-buildpacks/image-labels",               optional = true },
+]
+
+[metadata]
+pre-package   = "scripts/build.sh"
+include-files = [
+  "LICENSE",
+  "NOTICE",
+  "README.md",
+  "buildpack.toml",
+]
