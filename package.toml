@@ -1,5 +1,5 @@
 dependencies = [
-  { image = "gcr.io/paketo-buildpacks/apache-tomcat:0.0.0" },
+  { image = "gcr.io/paketo-buildpacks/apache-tomcat:1.1.0" },
   { image = "gcr.io/paketo-buildpacks/azure-application-insights:0.0.0" },
   { image = "gcr.io/paketo-buildpacks/bellsoft-liberica:0.0.0" },
   { image = "gcr.io/paketo-buildpacks/debug:0.0.0" },
