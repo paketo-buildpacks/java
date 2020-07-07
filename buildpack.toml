@@ -34,7 +34,7 @@ group = [
   { id = "paketo-buildpacks/apache-tomcat",              version="1.3.1", optional = true },
   { id = "paketo-buildpacks/dist-zip",                   version="1.3.6", optional = true },
   { id = "paketo-buildpacks/spring-boot",                version="1.9.1", optional = true },
-  { id = "paketo-buildpacks/procfile",                   version="1.3.8", optional = true },
+  { id = "paketo-buildpacks/procfile",                   version="1.3.9", optional = true },
 
 ### Order does not matter
   { id = "paketo-buildpacks/azure-application-insights", version="1.4.1", optional = true },
