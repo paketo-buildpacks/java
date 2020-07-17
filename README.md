@@ -8,6 +8,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/debug`](https://github.com/paketo-buildpacks/debug)
 * [`paketo-buildpacks/dist-zip`](https://github.com/paketo-buildpacks/dist-zip)
 * [`paketo-buildpacks/encrypt-at-rest`](https://github.com/paketo-buildpacks/encrypt-at-rest)
+* [`paketo-buildpacks/environment-variables`](https://github.com/paketo-buildpacks/environment-variables)
 * [`paketo-buildpacks/executable-jar`](https://github.com/paketo-buildpacks/executable-jar)
 * [`paketo-buildpacks/google-stackdriver`](https://github.com/paketo-buildpacks/google-stackdriver)
 * [`paketo-buildpacks/gradle`](https://github.com/paketo-buildpacks/gradle)
