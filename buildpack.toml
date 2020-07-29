@@ -26,7 +26,7 @@ group = [
 ### Order is strictly enforced
   { id = "paketo-buildpacks/bellsoft-liberica",          version="2.11.1" },
   { id = "paketo-buildpacks/gradle",                     version="2.1.2", optional = true },
-  { id = "paketo-buildpacks/maven",                      version="2.2.1", optional = true },
+  { id = "paketo-buildpacks/maven",                      version="2.2.2", optional = true },
   { id = "paketo-buildpacks/sbt",                        version="2.1.1", optional = true },
 
 ### Order determines precedence
