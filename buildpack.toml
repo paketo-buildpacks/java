@@ -24,7 +24,7 @@ homepage = "https://github.com/paketo-buildpacks/java"
 group = [
 
 ### Order is strictly enforced
-  { id = "paketo-buildpacks/bellsoft-liberica",          version="2.12.0" },
+  { id = "paketo-buildpacks/bellsoft-liberica",          version="2.12.1" },
   { id = "paketo-buildpacks/gradle",                     version="2.1.2", optional = true },
   { id = "paketo-buildpacks/maven",                      version="2.2.2", optional = true },
   { id = "paketo-buildpacks/sbt",                        version="2.1.2", optional = true },
