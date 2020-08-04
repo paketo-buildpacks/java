@@ -45,7 +45,7 @@ group = [
 ### Order is strictly enforced
   { id = "paketo-buildpacks/encrypt-at-rest",            version="1.2.12", optional = true },
   { id = "paketo-buildpacks/environment-variables",      version="1.1.0", optional = true },
-  { id = "paketo-buildpacks/image-labels",               version="1.1.5", optional = true },
+  { id = "paketo-buildpacks/image-labels",               version="1.2.0", optional = true },
 ]
 
 [metadata]
