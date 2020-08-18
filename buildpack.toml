@@ -41,7 +41,7 @@ group = [
   { id = "paketo-buildpacks/azure-application-insights", version="2.0.0", optional = true },
   { id = "paketo-buildpacks/debug",                      version="2.0.0", optional = true },
   { id = "paketo-buildpacks/google-stackdriver",         version="1.11.0", optional = true },
-  { id = "paketo-buildpacks/jmx",                        version="1.2.0", optional = true },
+  { id = "paketo-buildpacks/jmx",                        version="2.0.0", optional = true },
 
 ### Order is strictly enforced
   { id = "paketo-buildpacks/encrypt-at-rest",            version="2.0.0", optional = true },
