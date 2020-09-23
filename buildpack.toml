@@ -38,7 +38,7 @@ group = [
   { id = "paketo-buildpacks/procfile",                   version="2.0.2", optional = true },
 
 ### Order does not matter
-  { id = "paketo-buildpacks/azure-application-insights", version="2.4.0", optional = true },
+  { id = "paketo-buildpacks/azure-application-insights", version="2.5.0", optional = true },
   { id = "paketo-buildpacks/debug",                      version="2.1.1", optional = true },
   { id = "paketo-buildpacks/google-stackdriver",         version="2.6.0", optional = true },
   { id = "paketo-buildpacks/jmx",                        version="2.1.1", optional = true },
