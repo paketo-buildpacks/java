@@ -14,6 +14,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/gradle`](https://github.com/paketo-buildpacks/gradle)
 * [`paketo-buildpacks/image-labels`](https://github.com/paketo-buildpacks/image-labels)
 * [`paketo-buildpacks/jmx`](https://github.com/paketo-buildpacks/jmx)
+* [`paketo-buildpacks/leiningen`](https://github.com/paketo-buildpacks/leiningen)
 * [`paketo-buildpacks/maven`](https://github.com/paketo-buildpacks/maven)
 * [`paketo-buildpacks/procfile`](https://github.com/paketo-buildpacks/procfile)
 * [`paketo-buildpacks/sbt`](https://github.com/paketo-buildpacks/sbt)
