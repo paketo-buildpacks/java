@@ -1,0 +1,65 @@
+name: Tests
+"on":
+    pull_request: {}
+jobs:
+    package:
+        name: Package Test
+        runs-on:
+            - ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-go@v2
+              with:
+                go-version: "1.15"
+            - uses: actions/cache@v2
+              with:
+                key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum','**/buildpack.toml') }}
+                path: |-
+                    ${{ env.HOME }}/go/pkg/mod
+                    ${{ env.HOME }}/carton-cache
+                restore-keys: ${{ runner.os }}-go-
+            - name: Install Create Package
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                GO111MODULE=on go get -u -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/create-package
+            - name: Create Package
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                VERSION=${VERSION:-$(git rev-parse --short HEAD)}
+
+                create-package \
+                	--cache-location "${HOME}"/carton-cache \
+                	--destination "${HOME}"/buildpack \
+                	--include-dependencies \
+                	--version "${VERSION}"
+
+                [[ -e package.toml ]] && cp package.toml "${HOME}"/package.toml
+                printf '[buildpack]\nuri = "%s"' "${HOME}"/buildpack >> "${HOME}"/package.toml
+            - name: Install pack
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                curl \
+                	--location \
+                	--show-error \
+                	--silent \
+                	"https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz" \
+                	| sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack
+              env:
+                PACK_VERSION: 0.13.1
+            - name: Package Buildpack
+              run: |+
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                pack package-buildpack test/package --config "${HOME}"/package.toml
+
