@@ -18,15 +18,15 @@ categories:
       labels:
         - type:task
 exclude-labels:
-    - 'type: question'
+    - type:question
 version-resolver:
     major:
         labels:
-            - 'semver: major'
+            - semver:major
     minor:
         labels:
-            - 'semver: minor'
+            - semver:minor
     patch:
         labels:
-            - 'semver: patch'
+            - semver:patch
     default: patch

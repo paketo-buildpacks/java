@@ -1,12 +1,11 @@
-name: Tests
+name: Create Package
 "on":
-    pull_request: {}
-    push:
-        branches:
-            - main
+    release:
+        types:
+            - published
 jobs:
-    package:
-        name: Package Test
+    create-package:
+        name: Create Package
         runs-on:
             - ubuntu-latest
         steps:
@@ -33,11 +32,6 @@ jobs:
             - uses: actions/setup-go@v2
               with:
                 go-version: "1.15"
-            - uses: actions/cache@v2
-              with:
-                key: ${{ runner.os }}-go-${{ hashFiles('**/buildpack.toml') }}
-                path: ${{ env.HOME }}/carton-cache
-                restore-keys: ${{ runner.os }}-go-
             - name: Install Create Package
               run: |
                 #!/usr/bin/env bash
@@ -66,8 +60,14 @@ jobs:
                 [[ -e package.toml ]] && cp package.toml "${HOME}"/package.toml
                 printf '[buildpack]\nuri = "%s"' "${HOME}"/buildpack >> "${HOME}"/package.toml
               env:
-                INCLUDE_DEPENDENCIES: "true"
                 VERSION: ${{ steps.version.outputs.version }}
+            - name: Install Crane
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                GO111MODULE=on go get -u -ldflags="-s -w" github.com/google/go-containerregistry/cmd/crane
             - name: Install pack
               run: |
                 #!/usr/bin/env bash
@@ -85,7 +85,13 @@ jobs:
                 	| tar -C "${HOME}"/bin/ -xzv pack
               env:
                 PACK_VERSION: 0.13.1
-            - name: Package Buildpack
+            - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+              with:
+                service_account_key: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+            - name: Configure gcloud docker credentials
+              run: gcloud auth configure-docker
+            - id: package
+              name: Package Buildpack
               run: |
                 #!/usr/bin/env bash
 
@@ -104,5 +110,28 @@ jobs:
                     --config "${HOME}"/package.toml
                 fi
               env:
-                PACKAGE: test
+                PACKAGE: gcr.io/paketo-buildpacks/java
+                PUBLISH: "true"
                 VERSION: ${{ steps.version.outputs.version }}
+            - name: Update release with digest
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                PAYLOAD=$(cat "${GITHUB_EVENT_PATH}")
+
+                RELEASE_ID=$(jq -n -r --argjson PAYLOAD "${PAYLOAD}" '$PAYLOAD.release.id')
+                RELEASE_TAG_NAME=$(jq -n -r --argjson PAYLOAD "${PAYLOAD}" '$PAYLOAD.release.tag_name')
+                RELEASE_NAME=$(jq -n -r --argjson PAYLOAD "${PAYLOAD}" '$PAYLOAD.release.name')
+                RELEASE_BODY=$(jq -n -r --argjson PAYLOAD "${PAYLOAD}" '$PAYLOAD.release.body')
+
+                gh api \
+                  --method PATCH \
+                  "/repos/:owner/:repo/releases/${RELEASE_ID}" \
+                  --field "tag_name=${RELEASE_TAG_NAME}" \
+                  --field "name=${RELEASE_NAME}" \
+                  --field "body=${RELEASE_BODY//<!-- DIGEST PLACEHOLDER -->/\`${DIGEST}\`}"
+              env:
+                DIGEST: ${{ steps.package.outputs.digest }}
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
