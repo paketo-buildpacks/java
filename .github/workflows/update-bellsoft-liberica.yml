@@ -1,0 +1,87 @@
+name: Update bellsoft-liberica
+"on":
+    schedule:
+        - cron: 0 * * * *
+    workflow_dispatch: {}
+jobs:
+    update:
+        name: Update Package Dependency
+        runs-on:
+            - ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-go@v2
+              with:
+                go-version: "1.15"
+            - name: Install crane
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                GO111MODULE=on go get -u -ldflags="-s -w" github.com/google/go-containerregistry/cmd/crane
+            - name: Install yj
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                mkdir -p "${HOME}"/bin
+                echo "::add-path::${HOME}/bin"
+
+                curl \
+                	--location \
+                	--show-error \
+                	--silent \
+                	--output "${HOME}"/bin/yj \
+                	"https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux"
+
+                chmod +x "${HOME}"/bin/yj
+              env:
+                YJ_VERSION: 5.0.0
+            - name: Install update-package-dependency
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                GO111MODULE=on go get -u -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/update-package-dependency
+            - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+              with:
+                service_account_key: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+            - name: Configure gcloud docker credentials
+              run: gcloud auth configure-docker
+            - id: package
+              name: Update Package Dependency
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                OLD_VERSION=$(yj -tj < package.toml | jq -r ".dependencies[].image | select(. | startswith(\"${DEPENDENCY}\"))")
+                OLD_VERSION=${OLD_VERSION#*:}
+                NEW_VERSION=$(crane ls "${DEPENDENCY}" | grep -v latest | sort -V | tail -n1)
+
+                update-package-dependency \
+                  --buildpack-toml buildpack.toml \
+                  --package-toml package.toml \
+                  --id "${DEPENDENCY}" \
+                  --version "${NEW_VERSION}"
+
+                echo "::set-output name=old-version::${OLD_VERSION}"
+                echo "::set-output name=new-version::${NEW_VERSION}"
+              env:
+                DEPENDENCY: gcr.io/paketo-buildpacks/bellsoft-liberica
+            - uses: peter-evans/create-pull-request@v3
+              with:
+                body: Bumps [`gcr.io/paketo-buildpacks/bellsoft-liberica`](https://gcr.io/paketo-buildpacks/bellsoft-liberica) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/bellsoft-liberica:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/bellsoft-liberica:${{ steps.package.outputs.new-version }}).
+                branch: update-package/gcr.io/paketo-buildpacks/bellsoft-liberica
+                commit-message: |-
+                    Bump gcr.io/paketo-buildpacks/bellsoft-liberica from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+
+                    Bumps gcr.io/paketo-buildpacks/bellsoft-liberica from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
+                delete-branch: true
+                labels: semver:minor, type:dependency-upgrade
+                signoff: true
+                title: Bump gcr.io/paketo-buildpacks/bellsoft-liberica from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+                token: ${{ secrets.GITHUB_TOKEN }}
