@@ -3,7 +3,6 @@ name: Update Draft Release
     push:
         branches:
             - main
-    workflow_dispatch: {}
 jobs:
     update:
         name: Update Draft Release
@@ -14,7 +13,12 @@ jobs:
               uses: release-drafter/release-drafter@v5
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - uses: actions/checkout@v2
+            - name: Docker login gcr.io
+              uses: docker/login-action@v1
+              with:
+                password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+                registry: gcr.io
+                username: _json_key
             - uses: actions/setup-go@v2
               with:
                 go-version: "1.15"
@@ -25,11 +29,7 @@ jobs:
                 set -euo pipefail
 
                 GO111MODULE=on go get -u -ldflags="-s -w" github.com/google/go-containerregistry/cmd/crane
-            - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-              with:
-                service_account_key: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
-            - name: Configure gcloud docker credentials
-              run: gcloud auth configure-docker
+            - uses: actions/checkout@v2
             - name: Install yj
               run: |
                 #!/usr/bin/env bash
@@ -37,14 +37,14 @@ jobs:
                 set -euo pipefail
 
                 mkdir -p "${HOME}"/bin
-                echo "::add-path::${HOME}/bin"
+                echo "${HOME}/bin" >> "${GITHUB_PATH}"
 
                 curl \
-                	--location \
-                	--show-error \
-                	--silent \
-                	--output "${HOME}"/bin/yj \
-                	"https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux"
+                  --location \
+                  --show-error \
+                  --silent \
+                  --output "${HOME}"/bin/yj \
+                  "https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux"
 
                 chmod +x "${HOME}"/bin/yj
               env:
@@ -57,14 +57,16 @@ jobs:
 
                 PAYLOAD=$(yj -tj < buildpack.toml | jq '{ primary: . }')
 
-                for PACKAGE in $(yj -t < package.toml | jq -r '.dependencies[].image'); do
-                  PAYLOAD=$(jq -n -r \
-                    --argjson PAYLOAD "${PAYLOAD}" \
-                    --argjson BUILDPACK "$(crane export "${PACKAGE}" - \
-                      | tar xOf - --absolute-names --wildcards "/cnb/buildpacks/*/*/buildpack.toml" \
-                      | yj -tj)" \
-                    '$PAYLOAD | .buildpacks += [ $BUILDPACK ]')
-                done
+                if [[ -e package.toml ]]; then
+                  for PACKAGE in $(yj -t < package.toml | jq -r '.dependencies[].image'); do
+                    PAYLOAD=$(jq -n -r \
+                      --argjson PAYLOAD "${PAYLOAD}" \
+                      --argjson BUILDPACK "$(crane export "${PACKAGE}" - \
+                        | tar xOf - --absolute-names --wildcards "/cnb/buildpacks/*/*/buildpack.toml" \
+                        | yj -tj)" \
+                      '$PAYLOAD | .buildpacks += [ $BUILDPACK ]')
+                  done
+                fi
 
                 jq -n -r \
                   --argjson PAYLOAD "${PAYLOAD}" \
