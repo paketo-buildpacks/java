@@ -1,0 +1,104 @@
+name: Update ca-certificates
+"on":
+    schedule:
+        - cron: 0 12-23 * * 1-5
+    workflow_dispatch: {}
+jobs:
+    update:
+        name: Update Package Dependency
+        runs-on:
+            - ubuntu-latest
+        steps:
+            - if: ${{ github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork }}
+              name: Docker login gcr.io
+              uses: docker/login-action@v1
+              with:
+                password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+                registry: gcr.io
+                username: _json_key
+            - uses: actions/checkout@v2
+            - uses: actions/setup-go@v2
+              with:
+                go-version: "1.15"
+            - name: Install crane
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                GO111MODULE=on go get -u -ldflags="-s -w" github.com/google/go-containerregistry/cmd/crane
+            - name: Install update-package-dependency
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                GO111MODULE=on go get -u -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/update-package-dependency
+            - name: Install yj
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                mkdir -p "${HOME}"/bin
+                echo "${HOME}/bin" >> "${GITHUB_PATH}"
+
+                curl \
+                  --location \
+                  --show-error \
+                  --silent \
+                  --output "${HOME}"/bin/yj \
+                  "https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux"
+
+                chmod +x "${HOME}"/bin/yj
+              env:
+                YJ_VERSION: 5.0.0
+            - id: package
+              name: Update Package Dependency
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                NEW_VERSION=$(crane ls "${DEPENDENCY}" | grep -v latest | sort -V | tail -n 1)
+
+                if [[ -e builder.toml ]]; then
+                  OLD_VERSION=$(yj -tj < builder.toml | jq -r ".buildpacks[].image | capture(\"${DEPENDENCY}:(?<version>.+)\") | .version")
+
+                  update-package-dependency \
+                    --builder-toml builder.toml \
+                    --id "${DEPENDENCY}" \
+                    --version "${NEW_VERSION}"
+
+                  git add builder.toml
+                elif [[ -e package.toml ]]; then
+                  OLD_VERSION=$(yj -tj < package.toml | jq -r ".dependencies[].image | capture(\"${DEPENDENCY}:(?<version>.+)\") | .version")
+
+                  update-package-dependency \
+                    --buildpack-toml buildpack.toml \
+                    --package-toml package.toml \
+                    --id "${DEPENDENCY}" \
+                    --version "${NEW_VERSION}"
+
+                  git add buildpack.toml package.toml
+                fi
+
+                git checkout -- .
+
+                echo "::set-output name=old-version::${OLD_VERSION}"
+                echo "::set-output name=new-version::${NEW_VERSION}"
+              env:
+                DEPENDENCY: gcr.io/paketo-buildpacks/ca-certificates
+            - uses: peter-evans/create-pull-request@v3
+              with:
+                body: Bumps [`gcr.io/paketo-buildpacks/ca-certificates`](https://gcr.io/paketo-buildpacks/ca-certificates) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/ca-certificates:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/ca-certificates:${{ steps.package.outputs.new-version }}).
+                branch: update/package/ca-certificates
+                commit-message: |-
+                    Bump gcr.io/paketo-buildpacks/ca-certificates from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+
+                    Bumps gcr.io/paketo-buildpacks/ca-certificates from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
+                delete-branch: true
+                labels: semver:minor, type:dependency-upgrade
+                signoff: true
+                title: Bump gcr.io/paketo-buildpacks/ca-certificates from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+                token: ${{ secrets.GITHUB_TOKEN }}
