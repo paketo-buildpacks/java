@@ -12,7 +12,7 @@ jobs:
             - id: release-drafter
               uses: release-drafter/release-drafter@v5
               env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                GITHUB_TOKEN: ${{ secrets.JAVA_GITHUB_TOKEN }}
             - if: ${{ github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork }}
               name: Docker login gcr.io
               uses: docker/login-action@v1
@@ -20,22 +20,32 @@ jobs:
                 password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
                 registry: gcr.io
                 username: _json_key
-            - uses: actions/setup-go@v2
-              with:
-                go-version: "1.15"
             - name: Install crane
               run: |
                 #!/usr/bin/env bash
 
                 set -euo pipefail
 
-                GO111MODULE=on go get -u -ldflags="-s -w" github.com/google/go-containerregistry/cmd/crane
-            - uses: actions/checkout@v2
+                echo "Installing crane ${CRANE_VERSION}"
+
+                mkdir -p "${HOME}"/bin
+                echo "${HOME}/bin" >> "${GITHUB_PATH}"
+
+                curl \
+                  --show-error \
+                  --silent \
+                  --location \
+                  "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
+                | tar -C "${HOME}/bin" -xz crane
+              env:
+                CRANE_VERSION: 0.1.4
             - name: Install yj
               run: |
                 #!/usr/bin/env bash
 
                 set -euo pipefail
+
+                echo "Installing yj ${YJ_VERSION}"
 
                 mkdir -p "${HOME}"/bin
                 echo "${HOME}/bin" >> "${GITHUB_PATH}"
@@ -50,6 +60,7 @@ jobs:
                 chmod +x "${HOME}"/bin/yj
               env:
                 YJ_VERSION: 5.0.0
+            - uses: actions/checkout@v2
             - name: Update draft release with buildpack information
               run: |
                 #!/usr/bin/env bash
@@ -86,12 +97,14 @@ jobs:
                   done
                 fi
 
-                while IFS= read -r -d '' FILE; do
-                  PAYLOAD=$(jq -n -r \
-                    --argjson PAYLOAD "${PAYLOAD}" \
-                    --argjson BUILDPACK "$(yj -tj < "${FILE}")" \
-                    '$PAYLOAD | .buildpacks += [ $BUILDPACK ]')
-                done < <(find buildpacks -name buildpack.toml -print0)
+                if [[ -d buildpacks ]]; then
+                  while IFS= read -r -d '' FILE; do
+                    PAYLOAD=$(jq -n -r \
+                      --argjson PAYLOAD "${PAYLOAD}" \
+                      --argjson BUILDPACK "$(yj -tj < "${FILE}")" \
+                      '$PAYLOAD | .buildpacks += [ $BUILDPACK ]')
+                  done < <(find buildpacks -name buildpack.toml -print0)
+                fi
 
                 jq -n -r \
                   --argjson PAYLOAD "${PAYLOAD}" \
@@ -197,7 +210,7 @@ jobs:
                   --field "name=@${HOME}/name" \
                   --field "body=@${HOME}/body"
               env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                GITHUB_TOKEN: ${{ secrets.JAVA_GITHUB_TOKEN }}
                 RELEASE_BODY: ${{ steps.release-drafter.outputs.body }}
                 RELEASE_ID: ${{ steps.release-drafter.outputs.id }}
                 RELEASE_NAME: ${{ steps.release-drafter.outputs.name }}
