@@ -16,17 +16,9 @@ jobs:
                 password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
                 registry: gcr.io
                 username: _json_key
-            - uses: actions/checkout@v2
             - uses: actions/setup-go@v2
               with:
                 go-version: "1.15"
-            - name: Install crane
-              run: |
-                #!/usr/bin/env bash
-
-                set -euo pipefail
-
-                GO111MODULE=on go get -u -ldflags="-s -w" github.com/google/go-containerregistry/cmd/crane
             - name: Install update-package-dependency
               run: |
                 #!/usr/bin/env bash
@@ -34,11 +26,32 @@ jobs:
                 set -euo pipefail
 
                 GO111MODULE=on go get -u -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/update-package-dependency
+            - name: Install crane
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                echo "Installing crane ${CRANE_VERSION}"
+
+                mkdir -p "${HOME}"/bin
+                echo "${HOME}/bin" >> "${GITHUB_PATH}"
+
+                curl \
+                  --show-error \
+                  --silent \
+                  --location \
+                  "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
+                | tar -C "${HOME}/bin" -xz crane
+              env:
+                CRANE_VERSION: 0.1.4
             - name: Install yj
               run: |
                 #!/usr/bin/env bash
 
                 set -euo pipefail
+
+                echo "Installing yj ${YJ_VERSION}"
 
                 mkdir -p "${HOME}"/bin
                 echo "${HOME}/bin" >> "${GITHUB_PATH}"
@@ -53,6 +66,7 @@ jobs:
                 chmod +x "${HOME}"/bin/yj
               env:
                 YJ_VERSION: 5.0.0
+            - uses: actions/checkout@v2
             - id: package
               name: Update Package Dependency
               run: |
@@ -101,4 +115,4 @@ jobs:
                 labels: semver:minor, type:dependency-upgrade
                 signoff: true
                 title: Bump gcr.io/paketo-buildpacks/leiningen from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
-                token: ${{ secrets.GITHUB_TOKEN }}
+                token: ${{ secrets.JAVA_GITHUB_TOKEN }}
