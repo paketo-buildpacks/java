@@ -16,5 +16,5 @@ dependencies = [
   { image = "gcr.io/paketo-buildpacks/maven:3.2.0" },
   { image = "gcr.io/paketo-buildpacks/procfile:3.0.0" },
   { image = "gcr.io/paketo-buildpacks/sbt:3.4.0" },
-  { image = "gcr.io/paketo-buildpacks/spring-boot:3.3.0" },
+  { image = "gcr.io/paketo-buildpacks/spring-boot:3.4.0" },
 ]
