@@ -105,6 +105,7 @@ jobs:
                 DEPENDENCY: gcr.io/paketo-buildpacks/environment-variables
             - uses: peter-evans/create-pull-request@v3
               with:
+                author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/environment-variables`](https://gcr.io/paketo-buildpacks/environment-variables) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/environment-variables:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/environment-variables:${{ steps.package.outputs.new-version }}).
                 branch: update/package/environment-variables
                 commit-message: |-

@@ -105,6 +105,7 @@ jobs:
                 DEPENDENCY: gcr.io/paketo-buildpacks/image-labels
             - uses: peter-evans/create-pull-request@v3
               with:
+                author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/image-labels`](https://gcr.io/paketo-buildpacks/image-labels) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/image-labels:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/image-labels:${{ steps.package.outputs.new-version }}).
                 branch: update/package/image-labels
                 commit-message: |-
