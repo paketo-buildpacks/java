@@ -105,6 +105,7 @@ jobs:
                 DEPENDENCY: gcr.io/paketo-buildpacks/spring-boot
             - uses: peter-evans/create-pull-request@v3
               with:
+                author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/spring-boot`](https://gcr.io/paketo-buildpacks/spring-boot) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/spring-boot:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/spring-boot:${{ steps.package.outputs.new-version }}).
                 branch: update/package/spring-boot
                 commit-message: |-
