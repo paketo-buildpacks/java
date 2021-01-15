@@ -1,6 +1,6 @@
 dependencies = [
   { uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:3.2.0" },
-  { uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:3.0.0" },
+  { uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:3.0.1" },
   { uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:6.0.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:1.0.1" },
   { uri = "docker://gcr.io/paketo-buildpacks/debug:2.1.4" },
