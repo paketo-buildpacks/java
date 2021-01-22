@@ -25,7 +25,7 @@ group = [
 
 ### Order is strictly enforced
   { id = "paketo-buildpacks/ca-certificates",            version="1.0.1", optional = true },
-  { id = "paketo-buildpacks/bellsoft-liberica",          version="6.0.0" },
+  { id = "paketo-buildpacks/bellsoft-liberica",          version="6.1.0" },
   { id = "paketo-buildpacks/gradle",                     version="3.5.0", optional = true },
   { id = "paketo-buildpacks/leiningen",                  version="1.2.1", optional = true },
   { id = "paketo-buildpacks/maven",                      version="3.2.1", optional = true },
@@ -41,13 +41,13 @@ group = [
 ### Order does not matter
   { id = "paketo-buildpacks/azure-application-insights", version="3.1.0", optional = true },
   { id = "paketo-buildpacks/debug",                      version="2.1.4", optional = true },
-  { id = "paketo-buildpacks/google-stackdriver",         version="2.15.0", optional = true },
+  { id = "paketo-buildpacks/google-stackdriver",         version="2.16.0", optional = true },
   { id = "paketo-buildpacks/jmx",                        version="2.1.4", optional = true },
 
 ### Order is strictly enforced
   { id = "paketo-buildpacks/encrypt-at-rest",            version="2.2.3", optional = true },
   { id = "paketo-buildpacks/environment-variables",      version="2.1.2", optional = true },
-  { id = "paketo-buildpacks/image-labels",               version="2.0.6", optional = true },
+  { id = "paketo-buildpacks/image-labels",               version="2.0.7", optional = true },
 ]
 
 [metadata]
