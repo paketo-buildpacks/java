@@ -29,7 +29,7 @@ group = [
   { id = "paketo-buildpacks/gradle",                     version="4.2.0", optional = true },
   { id = "paketo-buildpacks/leiningen",                  version="2.0.0", optional = true },
   { id = "paketo-buildpacks/maven",                      version="4.0.0", optional = true },
-  { id = "paketo-buildpacks/sbt",                        version="4.0.0", optional = true },
+  { id = "paketo-buildpacks/sbt",                        version="4.1.0", optional = true },
 
 ### Order determines precedence
   { id = "paketo-buildpacks/executable-jar",             version="4.0.0", optional = true },
