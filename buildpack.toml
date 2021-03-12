@@ -41,7 +41,7 @@ group = [
 ### Order does not matter
   { id = "paketo-buildpacks/azure-application-insights", version="4.1.0", optional = true },
   { id = "paketo-buildpacks/debug",                      version="3.0.0", optional = true },
-  { id = "paketo-buildpacks/google-stackdriver",         version="3.4.0", optional = true },
+  { id = "paketo-buildpacks/google-stackdriver",         version="3.5.0", optional = true },
   { id = "paketo-buildpacks/jmx",                        version="3.0.0", optional = true },
 
 ### Order is strictly enforced
