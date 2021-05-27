@@ -18,7 +18,7 @@ jobs:
                 username: _json_key
             - uses: actions/setup-go@v2
               with:
-                go-version: "1.15"
+                go-version: "1.16"
             - name: Install update-package-dependency
               run: |
                 #!/usr/bin/env bash
@@ -44,7 +44,7 @@ jobs:
                   "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
                 | tar -C "${HOME}/bin" -xz crane
               env:
-                CRANE_VERSION: 0.1.4
+                CRANE_VERSION: 0.5.1
             - name: Install yj
               run: |
                 #!/usr/bin/env bash
