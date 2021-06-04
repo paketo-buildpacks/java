@@ -33,7 +33,7 @@ group = [
 
 ### Order determines precedence
   { id = "paketo-buildpacks/executable-jar",             version="5.0.0", optional = true },
-  { id = "paketo-buildpacks/apache-tomcat",              version="5.4.0", optional = true },
+  { id = "paketo-buildpacks/apache-tomcat",              version="5.5.0", optional = true },
   { id = "paketo-buildpacks/dist-zip",                   version="4.0.0", optional = true },
   { id = "paketo-buildpacks/spring-boot",                version="4.3.0", optional = true },
   { id = "paketo-buildpacks/procfile",                   version="4.1.0", optional = true },
