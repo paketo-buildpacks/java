@@ -12,13 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-api = "0.5"
+api = "0.6"
 
 [buildpack]
 id       = "paketo-buildpacks/java"
 name     = "Paketo Java Buildpack"
 version  = "{{.version}}"
 homepage = "https://github.com/paketo-buildpacks/java"
+description = "A Cloud Native Buildpack with an order definition suitable for Java applications"
+keywords    = ["java", "composite"]
+
+[[buildpack.licenses]]
+type = "Apache-2.0"
+uri  = "https://github.com/paketo-buildpacks/java/blob/main/LICENSE"
 
 [[order]]
 group = [
