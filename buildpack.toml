@@ -24,29 +24,29 @@ homepage = "https://github.com/paketo-buildpacks/java"
 group = [
 
 ### Order is strictly enforced
-  { id = "paketo-buildpacks/ca-certificates",            version="2.2.0", optional = true },
-  { id = "paketo-buildpacks/bellsoft-liberica",          version="8.0.0" },
+  { id = "paketo-buildpacks/ca-certificates",            version="2.3.0", optional = true },
+  { id = "paketo-buildpacks/bellsoft-liberica",          version="8.1.0" },
   { id = "paketo-buildpacks/leiningen",                  version="3.1.0", optional = true },
   { id = "paketo-buildpacks/gradle",                     version="5.2.0", optional = true },
   { id = "paketo-buildpacks/maven",                      version="5.2.0", optional = true },
   { id = "paketo-buildpacks/sbt",                        version="5.2.0", optional = true },
 
 ### Order determines precedence
-  { id = "paketo-buildpacks/executable-jar",             version="5.0.0", optional = true },
+  { id = "paketo-buildpacks/executable-jar",             version="5.1.0", optional = true },
   { id = "paketo-buildpacks/apache-tomcat",              version="5.4.0", optional = true },
-  { id = "paketo-buildpacks/dist-zip",                   version="4.0.0", optional = true },
+  { id = "paketo-buildpacks/dist-zip",                   version="4.1.0", optional = true },
   { id = "paketo-buildpacks/spring-boot",                version="4.3.0", optional = true },
   { id = "paketo-buildpacks/procfile",                   version="4.1.0", optional = true },
 
 ### Order does not matter
   { id = "paketo-buildpacks/azure-application-insights", version="4.3.0", optional = true },
-  { id = "paketo-buildpacks/debug",                      version="3.0.0", optional = true },
-  { id = "paketo-buildpacks/google-stackdriver",         version="3.10.0", optional = true },
+  { id = "paketo-buildpacks/debug",                      version="3.1.0", optional = true },
+  { id = "paketo-buildpacks/google-stackdriver",         version="3.11.0", optional = true },
   { id = "paketo-buildpacks/jmx",                        version="3.0.0", optional = true },
 
 ### Order is strictly enforced
-  { id = "paketo-buildpacks/encrypt-at-rest",            version="3.0.0", optional = true },
-  { id = "paketo-buildpacks/environment-variables",      version="3.0.0", optional = true },
+  { id = "paketo-buildpacks/encrypt-at-rest",            version="3.1.0", optional = true },
+  { id = "paketo-buildpacks/environment-variables",      version="3.1.0", optional = true },
   { id = "paketo-buildpacks/image-labels",               version="3.1.0", optional = true },
 ]
 
