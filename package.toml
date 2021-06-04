@@ -14,7 +14,7 @@ dependencies = [
   { uri = "docker://gcr.io/paketo-buildpacks/jmx:3.0.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/leiningen:3.1.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/maven:5.2.0" },
-  { uri = "docker://gcr.io/paketo-buildpacks/procfile:4.1.0" },
+  { uri = "docker://gcr.io/paketo-buildpacks/procfile:4.2.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/sbt:5.2.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/spring-boot:4.3.0" },
 ]
