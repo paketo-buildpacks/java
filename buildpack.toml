@@ -45,7 +45,7 @@ group = [
   { id = "paketo-buildpacks/procfile",                   version="4.2.2", optional = true },
 
 ### Order does not matter
-  { id = "paketo-buildpacks/azure-application-insights", version="4.4.2", optional = true },
+  { id = "paketo-buildpacks/azure-application-insights", version="c918131", optional = true },
   { id = "paketo-buildpacks/debug",                      version="3.1.2", optional = true },
   { id = "paketo-buildpacks/google-stackdriver",         version="3.11.2", optional = true },
   { id = "paketo-buildpacks/jmx",                        version="3.1.2", optional = true },
