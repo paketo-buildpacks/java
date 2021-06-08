@@ -41,7 +41,7 @@ group = [
   { id = "paketo-buildpacks/executable-jar",             version="5.1.2", optional = true },
   { id = "paketo-buildpacks/apache-tomcat",              version="5.5.2", optional = true },
   { id = "paketo-buildpacks/dist-zip",                   version="4.1.2", optional = true },
-  { id = "paketo-buildpacks/spring-boot",                version="4.4.2", optional = true },
+  { id = "paketo-buildpacks/spring-boot",                version="b916a8a", optional = true },
   { id = "paketo-buildpacks/procfile",                   version="4.2.2", optional = true },
 
 ### Order does not matter
