@@ -14,7 +14,7 @@ dependencies = [
   { uri = "docker://gcr.io/paketo-buildpacks/debug:3.1.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:3.11.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/jmx:3.1.0" },
-  { uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:3.1.0" },
+  { uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4835b8c" },
   { uri = "docker://gcr.io/paketo-buildpacks/environment-variables:3.1.0" },
   { uri = "docker://gcr.io/paketo-buildpacks/image-labels:3.1.0" },
 ]
