@@ -38,7 +38,7 @@ group = [
   { id = "paketo-buildpacks/sbt",                        version="5.4.0", optional = true },
 
 ### Order determines precedence
-  { id = "paketo-buildpacks/executable-jar",             version="5.1.2", optional = true },
+  { id = "paketo-buildpacks/executable-jar",             version="5.2.0", optional = true },
   { id = "paketo-buildpacks/apache-tomcat",              version="6.0.0", optional = true },
   { id = "paketo-buildpacks/dist-zip",                   version="4.1.2", optional = true },
   { id = "paketo-buildpacks/spring-boot",                version="4.4.2", optional = true },
