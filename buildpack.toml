@@ -35,7 +35,7 @@ group = [
   { id = "paketo-buildpacks/leiningen",                  version="3.3.0", optional = true },
   { id = "paketo-buildpacks/gradle",                     version="5.6.0", optional = true },
   { id = "paketo-buildpacks/maven",                      version="5.5.0", optional = true },
-  { id = "paketo-buildpacks/sbt",                        version="5.5.0", optional = true },
+  { id = "paketo-buildpacks/sbt",                        version="5.5.1", optional = true },
 
 ### Order determines precedence
   { id = "paketo-buildpacks/executable-jar",             version="5.2.0", optional = true },
