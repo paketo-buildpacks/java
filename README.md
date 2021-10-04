@@ -18,6 +18,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/procfile`](https://github.com/paketo-buildpacks/procfile)
 * [`paketo-buildpacks/sbt`](https://github.com/paketo-buildpacks/sbt)
 * [`paketo-buildpacks/spring-boot`](https://github.com/paketo-buildpacks/spring-boot)
+* [`paketo-buildpacks/watchexec`](https://github.com/paketo-buildpacks/watchexec)
 
 ## License
 This buildpack is released under version 2.0 of the [Apache License][a].
