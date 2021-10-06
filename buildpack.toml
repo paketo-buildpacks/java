@@ -15,50 +15,102 @@
 api = "0.6"
 
 [buildpack]
-id       = "paketo-buildpacks/java"
-name     = "Paketo Java Buildpack"
-version  = "{{.version}}"
-homepage = "https://github.com/paketo-buildpacks/java"
-description = "A Cloud Native Buildpack with an order definition suitable for Java applications"
-keywords    = ["java", "composite"]
+  description = "A Cloud Native Buildpack with an order definition suitable for Java applications"
+  homepage = "https://github.com/paketo-buildpacks/java"
+  id = "paketo-buildpacks/java"
+  keywords = ["java", "composite"]
+  name = "Paketo Java Buildpack"
+  version = "{{.version}}"
 
-[[buildpack.licenses]]
-type = "Apache-2.0"
-uri  = "https://github.com/paketo-buildpacks/java/blob/main/LICENSE"
-
-[[order]]
-group = [
-
-### Order is strictly enforced
-  { id = "paketo-buildpacks/ca-certificates",            version="2.4.1", optional = true },
-  { id = "paketo-buildpacks/bellsoft-liberica",          version="8.7.1" },
-  { id = "paketo-buildpacks/leiningen",                  version="3.4.0", optional = true },
-  { id = "paketo-buildpacks/gradle",                     version="5.6.0", optional = true },
-  { id = "paketo-buildpacks/maven",                      version="5.6.0", optional = true },
-  { id = "paketo-buildpacks/sbt",                        version="5.5.1", optional = true },
-  { id = "paketo-buildpacks/watchexec",                  version="1.1.0", optional = true },
-
-### Order determines precedence
-  { id = "paketo-buildpacks/executable-jar",             version="5.3.0", optional = true },
-  { id = "paketo-buildpacks/apache-tomcat",              version="6.3.0", optional = true },
-  { id = "paketo-buildpacks/dist-zip",                   version="4.2.1", optional = true },
-  { id = "paketo-buildpacks/spring-boot",                version="4.6.0", optional = true },
-  { id = "paketo-buildpacks/procfile",                   version="4.4.0", optional = true },
-
-### Order does not matter
-  { id = "paketo-buildpacks/azure-application-insights", version="4.8.0", optional = true },
-  { id = "paketo-buildpacks/google-stackdriver",         version="3.15.0", optional = true },
-
-### Order is strictly enforced
-  { id = "paketo-buildpacks/encrypt-at-rest",            version="3.2.1", optional = true },
-  { id = "paketo-buildpacks/environment-variables",      version="3.2.1", optional = true },
-  { id = "paketo-buildpacks/image-labels",               version="3.2.1", optional = true },
-]
+  [[buildpack.licenses]]
+    type = "Apache-2.0"
+    uri = "https://github.com/paketo-buildpacks/java/blob/main/LICENSE"
 
 [metadata]
-include-files = [
-  "LICENSE",
-  "NOTICE",
-  "README.md",
-  "buildpack.toml",
-]
+  include-files = ["LICENSE", "NOTICE", "README.md", "buildpack.toml"]
+
+[[order]]
+
+  [[order.group]]
+    id = "paketo-buildpacks/ca-certificates"
+    optional = true
+    version = "2.4.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/bellsoft-liberica"
+    version = "8.7.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/leiningen"
+    optional = true
+    version = "3.4.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/gradle"
+    optional = true
+    version = "5.6.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/maven"
+    optional = true
+    version = "5.6.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/sbt"
+    optional = true
+    version = "5.5.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/watchexec"
+    optional = true
+    version = "1.1.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/executable-jar"
+    optional = true
+    version = "5.3.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/apache-tomcat"
+    optional = true
+    version = "6.3.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/dist-zip"
+    optional = true
+    version = "4.2.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/spring-boot"
+    optional = true
+    version = "4.6.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/procfile"
+    optional = true
+    version = "4.4.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/azure-application-insights"
+    optional = true
+    version = "4.8.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/google-stackdriver"
+    optional = true
+    version = "3.15.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/encrypt-at-rest"
+    optional = true
+    version = "3.2.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/environment-variables"
+    optional = true
+    version = "3.2.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/image-labels"
+    optional = true
+    version = "3.2.1"
