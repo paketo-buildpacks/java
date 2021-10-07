@@ -30,7 +30,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:6.3.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:4.2.1"
+  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:4.3.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/spring-boot:4.6.0"
