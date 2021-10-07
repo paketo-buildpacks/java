@@ -46,6 +46,11 @@ api = "0.6"
     version = "3.4.0"
 
   [[order.group]]
+    id = "paketo-buildpacks/clojure-tools"
+    optional = true
+    version = "1.0.1"
+
+  [[order.group]]
     id = "paketo-buildpacks/gradle"
     optional = true
     version = "5.6.0"
