@@ -9,8 +9,8 @@ jobs:
         runs-on:
             - ubuntu-latest
         steps:
-            - if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
-              name: Docker login gcr.io
+            - name: Docker login gcr.io
+              if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
               uses: docker/login-action@v1
               with:
                 password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
@@ -67,8 +67,8 @@ jobs:
               env:
                 YJ_VERSION: 5.0.0
             - uses: actions/checkout@v2
-            - id: package
-              name: Update Package Dependency
+            - name: Update Package Dependency
+              id: package
               run: |
                 #!/usr/bin/env bash
 
@@ -85,13 +85,19 @@ jobs:
                     --version "${NEW_VERSION}"
 
                   git add builder.toml
-                elif [[ -e package.toml ]]; then
+                fi
+
+                if [[ -e package.toml ]]; then
                   OLD_VERSION=$(yj -tj < package.toml | jq -r ".dependencies[].uri | capture(\".*${DEPENDENCY}:(?<version>.+)\") | .version")
 
                   update-package-dependency \
                     --buildpack-toml buildpack.toml \
+                    --id "${BP_DEPENDENCY:-$DEPENDENCY}" \
+                    --version "${NEW_VERSION}"
+
+                  update-package-dependency \
                     --package-toml package.toml \
-                    --id "${DEPENDENCY}" \
+                    --id "${PKG_DEPENDENCY:-$DEPENDENCY}" \
                     --version "${NEW_VERSION}"
 
                   git add buildpack.toml package.toml
