@@ -113,7 +113,7 @@ api = "0.6"
   [[order.group]]
     id = "paketo-buildpacks/environment-variables"
     optional = true
-    version = "3.2.1"
+    version = "3.2.2"
 
   [[order.group]]
     id = "paketo-buildpacks/image-labels"
