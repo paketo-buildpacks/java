@@ -36,7 +36,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/spring-boot:4.7.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/procfile:4.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/procfile:4.4.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:4.8.0"

@@ -93,7 +93,7 @@ api = "0.6"
   [[order.group]]
     id = "paketo-buildpacks/procfile"
     optional = true
-    version = "4.4.0"
+    version = "4.4.1"
 
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
