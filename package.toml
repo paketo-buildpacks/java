@@ -45,7 +45,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:3.15.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:3.2.1"
+  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:3.2.2"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/environment-variables:3.2.1"
