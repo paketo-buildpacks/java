@@ -38,7 +38,7 @@ api = "0.6"
 
   [[order.group]]
     id = "paketo-buildpacks/bellsoft-liberica"
-    version = "8.7.1"
+    version = "8.8.0"
 
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
