@@ -105,8 +105,17 @@ jobs:
 
                 git checkout -- .
 
+                if [ "$(echo "$OLD_VERSION" | awk -F '.' '{print $1}')" != "$(echo "$NEW_VERSION" | awk -F '.' '{print $1}')" ]; then
+                  LABEL="semver:major"
+                elif [ "$(echo "$OLD_VERSION" | awk -F '.' '{print $2}')" != "$(echo "$NEW_VERSION" | awk -F '.' '{print $2}')" ]; then
+                  LABEL="semver:minor"
+                else
+                  LABEL="semver:patch"
+                fi
+
                 echo "::set-output name=old-version::${OLD_VERSION}"
                 echo "::set-output name=new-version::${NEW_VERSION}"
+                echo "::set-output name=version-label::${LABEL}"
               env:
                 DEPENDENCY: gcr.io/paketo-buildpacks/gradle
             - uses: peter-evans/create-pull-request@v3
@@ -119,7 +128,7 @@ jobs:
 
                     Bumps gcr.io/paketo-buildpacks/gradle from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
                 delete-branch: true
-                labels: semver:minor, type:dependency-upgrade
+                labels: ${{ steps.buildpack.outputs.version-label }}, type:dependency-upgrade
                 signoff: true
                 title: Bump gcr.io/paketo-buildpacks/gradle from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
