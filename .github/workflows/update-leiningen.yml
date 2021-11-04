@@ -44,7 +44,7 @@ jobs:
                   "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
                 | tar -C "${HOME}/bin" -xz crane
               env:
-                CRANE_VERSION: 0.5.1
+                CRANE_VERSION: 0.6.0
             - name: Install yj
               run: |
                 #!/usr/bin/env bash
@@ -128,7 +128,7 @@ jobs:
 
                     Bumps gcr.io/paketo-buildpacks/leiningen from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
                 delete-branch: true
-                labels: ${{ steps.buildpack.outputs.version-label }}, type:dependency-upgrade
+                labels: ${{ steps.package.outputs.version-label }}, type:dependency-upgrade
                 signoff: true
                 title: Bump gcr.io/paketo-buildpacks/leiningen from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
