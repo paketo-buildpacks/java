@@ -1,57 +1,57 @@
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:2.4.2"
+  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:8.9.0"
+  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.0.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/syft:1.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/leiningen:3.5.0"
+  uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:1.1.3"
+  uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/gradle:5.8.0"
+  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/maven:5.7.0"
+  uri = "docker://gcr.io/paketo-buildpacks/maven:6.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/sbt:5.6.0"
+  uri = "docker://gcr.io/paketo-buildpacks/sbt:6.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/watchexec:1.2.0"
+  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/executable-jar:5.3.1"
+  uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:6.5.0"
+  uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:7.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:4.3.0"
+  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:4.7.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/procfile:4.4.1"
+  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:4.10.0"
+  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:4.0.1"
+  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:3.2.2"
+  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:3.2.2"
+  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/image-labels:3.2.3"
+  uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.0.0"

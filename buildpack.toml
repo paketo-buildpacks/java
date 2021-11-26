@@ -34,11 +34,11 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/ca-certificates"
     optional = true
-    version = "2.4.2"
+    version = "3.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/bellsoft-liberica"
-    version = "8.9.0"
+    version = "9.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/syft"
@@ -48,79 +48,79 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
     optional = true
-    version = "3.5.0"
+    version = "4.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/clojure-tools"
     optional = true
-    version = "1.1.3"
+    version = "2.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/gradle"
     optional = true
-    version = "5.8.0"
+    version = "6.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/maven"
     optional = true
-    version = "5.7.0"
+    version = "6.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/sbt"
     optional = true
-    version = "5.6.0"
+    version = "6.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/watchexec"
     optional = true
-    version = "1.2.0"
+    version = "2.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/executable-jar"
     optional = true
-    version = "5.3.1"
+    version = "6.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/apache-tomcat"
     optional = true
-    version = "6.5.0"
+    version = "7.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/dist-zip"
     optional = true
-    version = "4.3.0"
+    version = "5.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/spring-boot"
     optional = true
-    version = "4.7.0"
+    version = "5.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/procfile"
     optional = true
-    version = "4.4.1"
+    version = "5.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
     optional = true
-    version = "4.10.0"
+    version = "5.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
     optional = true
-    version = "4.0.1"
+    version = "5.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/encrypt-at-rest"
     optional = true
-    version = "3.2.2"
+    version = "4.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/environment-variables"
     optional = true
-    version = "3.2.2"
+    version = "4.0.0"
 
   [[order.group]]
     id = "paketo-buildpacks/image-labels"
     optional = true
-    version = "3.2.3"
+    version = "4.0.0"
