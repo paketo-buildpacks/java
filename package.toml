@@ -42,7 +42,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/procfile:5.0.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.0.1"
+  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.1.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.1.0"
