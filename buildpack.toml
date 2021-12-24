@@ -83,7 +83,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/apache-tomcat"
     optional = true
-    version = "7.0.2"
+    version = "7.0.3"
 
   [[order.group]]
     id = "paketo-buildpacks/dist-zip"
