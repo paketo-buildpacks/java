@@ -48,7 +48,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
     optional = true
-    version = "4.0.1"
+    version = "4.0.2"
 
   [[order.group]]
     id = "paketo-buildpacks/clojure-tools"
