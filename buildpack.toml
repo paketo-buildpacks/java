@@ -16,8 +16,8 @@ api = "0.7"
 
 [buildpack]
   description = "A Cloud Native Buildpack with an order definition suitable for Java applications"
-  homepage = "https://github.com/paketo-buildpacks/java"
-  id = "paketo-buildpacks/java"
+  homepage = "https://github.com/garethjevans/java"
+  id = "garethjevans/java"
   keywords = ["java", "composite"]
   name = "Paketo Java Buildpack"
   version = "{{.version}}"
@@ -37,7 +37,7 @@ api = "0.7"
     version = "3.0.2"
 
   [[order.group]]
-    id = "paketo-buildpacks/bellsoft-liberica"
+    id = "paketo-buildpacks/sap-machine"
     version = "9.0.2"
 
   [[order.group]]
