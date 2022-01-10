@@ -1,9 +1,11 @@
+[buildpack]
+uri = "."
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.0.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.0.2"
+  uri = "docker://gcr.io/paketo-buildpacks/sap-machine:9.0.2"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/syft:1.4.0"

@@ -15,7 +15,7 @@
 api = "0.7"
 
 [buildpack]
-  description = "A Cloud Native Buildpack with an order definition suitable for Java applications"
+  description = "GJE - A Cloud Native Buildpack with an order definition suitable for Java applications"
   homepage = "https://github.com/garethjevans/java"
   id = "garethjevans/java"
   keywords = ["java", "composite"]
