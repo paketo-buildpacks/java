@@ -23,7 +23,7 @@ jobs:
               with:
                 registry: ${{ env.REGISTRY }}
                 username: ${{ github.actor }}
-                password: ${{ secrets.GITHUB_TOKEN }}                username: _json_key
+                password: ${{ secrets.GITHUB_TOKEN }}
             - uses: actions/setup-go@v2
               with:
                 go-version: "1.16"
