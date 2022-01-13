@@ -55,3 +55,6 @@
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.0.2"
+
+[[dependencies]]
+  uri = "docker://ghcr.io/garethjevans/postgres-buildpack:main"

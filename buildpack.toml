@@ -124,3 +124,8 @@ api = "0.7"
     id = "paketo-buildpacks/image-labels"
     optional = true
     version = "4.0.2"
+  
+  [[order.group]]
+    id = "garethjevans/postgres-buildpack"
+    optional = true
+    version = "0.0.0"
