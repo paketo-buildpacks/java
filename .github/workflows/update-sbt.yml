@@ -3,19 +3,27 @@ name: Update sbt
     schedule:
         - cron: 0 12-23 * * 1-5
     workflow_dispatch: {}
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
     update:
         name: Update Package Dependency
         runs-on:
             - ubuntu-latest
+        permissions:
+          contents: read
+          packages: write
         steps:
-            - name: Docker login gcr.io
+            - name: Docker login ghcr.io
               if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
-              uses: docker/login-action@v1
+              uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
               with:
-                password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
-                registry: gcr.io
-                username: _json_key
+                registry: ${{ env.REGISTRY }}
+                username: ${{ github.actor }}
+                password: ${{ secrets.GITHUB_TOKEN }}
             - uses: actions/setup-go@v2
               with:
                 go-version: "1.16"
