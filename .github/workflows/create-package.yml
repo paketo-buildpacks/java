@@ -1,8 +1,11 @@
 name: Create Package
-"on":
+on:
     release:
         types:
             - published
+    push:
+        branches:
+            - main
 jobs:
     create-package:
         name: Create Package
@@ -150,10 +153,11 @@ jobs:
                     --format "${FORMAT}"
                 fi
               env:
-                PACKAGE: gcr.io/paketo-buildpacks/java
+                PACKAGE: ghcr.io/garethjevans/java
                 PUBLISH: "true"
                 VERSION: ${{ steps.version.outputs.version }}
             - name: Update release with digest
+              if: ${{ false }}
               run: |
                 #!/usr/bin/env bash
 
@@ -175,10 +179,10 @@ jobs:
               env:
                 DIGEST: ${{ steps.package.outputs.digest }}
                 GITHUB_TOKEN: ${{ secrets.JAVA_GITHUB_TOKEN }}
-            - if: ${{ true }}
+            - if: ${{ false }}
               uses: docker://ghcr.io/buildpacks/actions/registry/request-add-entry:4.0.1
               with:
-                address: gcr.io/paketo-buildpacks/java@${{ steps.package.outputs.digest }}
-                id: paketo-buildpacks/java
+                address: ghcr.io/garethjevans/java@${{ steps.package.outputs.digest }}
+                id: garethjevans/java
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
                 version: ${{ steps.version.outputs.version }}
