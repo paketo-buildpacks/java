@@ -1,4 +1,4 @@
-name: Update bellsoft-liberica
+name: Update sap-machine
 "on":
     schedule:
         - cron: 0 12-23 * * 1-5
@@ -117,18 +117,18 @@ jobs:
                 echo "::set-output name=new-version::${NEW_VERSION}"
                 echo "::set-output name=version-label::${LABEL}"
               env:
-                DEPENDENCY: gcr.io/paketo-buildpacks/bellsoft-liberica
+                DEPENDENCY: gcr.io/paketo-buildpacks/sap-machine
             - uses: peter-evans/create-pull-request@v3
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
-                body: Bumps [`gcr.io/paketo-buildpacks/bellsoft-liberica`](https://gcr.io/paketo-buildpacks/bellsoft-liberica) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/bellsoft-liberica:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/bellsoft-liberica:${{ steps.package.outputs.new-version }}).
-                branch: update/package/bellsoft-liberica
+                body: Bumps [`gcr.io/paketo-buildpacks/sap-machine`](https://gcr.io/paketo-buildpacks/sap-machine) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/sap-machine:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/sap-machine:${{ steps.package.outputs.new-version }}).
+                branch: update/package/sap-machine
                 commit-message: |-
-                    Bump gcr.io/paketo-buildpacks/bellsoft-liberica from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+                    Bump gcr.io/paketo-buildpacks/sap-machine from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
 
-                    Bumps gcr.io/paketo-buildpacks/bellsoft-liberica from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
+                    Bumps gcr.io/paketo-buildpacks/sap-machine from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
                 delete-branch: true
                 labels: ${{ steps.package.outputs.version-label }}, type:dependency-upgrade
                 signoff: true
-                title: Bump gcr.io/paketo-buildpacks/bellsoft-liberica from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+                title: Bump gcr.io/paketo-buildpacks/sap-machine from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
                 token: ${{ secrets.JAVA_GITHUB_TOKEN }}
