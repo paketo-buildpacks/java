@@ -103,7 +103,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
     optional = true
-    version = "5.1.2"
+    version = "5.1.3"
 
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
