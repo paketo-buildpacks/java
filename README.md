@@ -14,6 +14,8 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/google-stackdriver`](https://github.com/paketo-buildpacks/google-stackdriver)
 * [`paketo-buildpacks/gradle`](https://github.com/paketo-buildpacks/gradle)
 * [`paketo-buildpacks/image-labels`](https://github.com/paketo-buildpacks/image-labels)
+* [`paketo-buildpacks/jattach`](https://github.com/paketo-buildpacks/jattach)
+* [`paketo-buildpacks/java-memory-assistant`](https://github.com/paketo-buildpacks/java-memory-assistant)
 * [`paketo-buildpacks/leiningen`](https://github.com/paketo-buildpacks/leiningen)
 * [`paketo-buildpacks/maven`](https://github.com/paketo-buildpacks/maven)
 * [`paketo-buildpacks/procfile`](https://github.com/paketo-buildpacks/procfile)
