@@ -12,7 +12,7 @@ jobs:
         steps:
             - uses: actions/setup-go@v2
               with:
-                go-version: "1.16"
+                go-version: "1.17"
             - name: Install create-package
               run: |
                 #!/usr/bin/env bash
@@ -38,7 +38,7 @@ jobs:
                   "https://github.com/buildpacks/pack/releases/download/v${PACK_VERSION}/pack-v${PACK_VERSION}-linux.tgz" \
                 | tar -C "${HOME}"/bin -xz pack
               env:
-                PACK_VERSION: 0.21.1
+                PACK_VERSION: 0.24.0
             - name: Enable pack Experimental
               if: ${{ false }}
               run: |
