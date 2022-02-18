@@ -48,7 +48,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.2.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.4.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.0.0"
