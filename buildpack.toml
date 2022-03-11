@@ -73,7 +73,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/watchexec"
     optional = true
-    version = "2.3.0"
+    version = "2.3.2"
 
   [[order.group]]
     id = "paketo-buildpacks/executable-jar"
