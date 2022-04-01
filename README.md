@@ -9,6 +9,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/bellsoft-liberica`](https://github.com/paketo-buildpacks/bellsoft-liberica)
 * [`paketo-buildpacks/ca-certificates`](https://github.com/paketo-buildpacks/ca-certificates)
 * [`paketo-buildpacks/clojure-tools`](https://github.com/paketo-buildpacks/clojure-tools)
+* [`paketo-buildpacks/datadog`](https://github.com/paketo-buildpacks/datadog)
 * [`paketo-buildpacks/dist-zip`](https://github.com/paketo-buildpacks/dist-zip)
 * [`paketo-buildpacks/encrypt-at-rest`](https://github.com/paketo-buildpacks/encrypt-at-rest)
 * [`paketo-buildpacks/environment-variables`](https://github.com/paketo-buildpacks/environment-variables)
