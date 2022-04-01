@@ -1,4 +1,4 @@
-# Copyright 2018-2020 the original author or authors.
+# Copyright 2018-2022 the original author or authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/maven"
     optional = true
-    version = "6.4.1"
+    version = "6.5.0"
 
   [[order.group]]
     id = "paketo-buildpacks/sbt"
@@ -83,12 +83,17 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/apache-tomcat"
     optional = true
-    version = "7.3.0"
+    version = "7.3.1"
+
+  [[order.group]]
+    id = "paketo-buildpacks/liberty"
+    optional = true
+    version = "1.0.1"
 
   [[order.group]]
     id = "paketo-buildpacks/dist-zip"
     optional = true
-    version = "5.2.0"
+    version = "5.2.1"
 
   [[order.group]]
     id = "paketo-buildpacks/spring-boot"
@@ -108,7 +113,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
     optional = true
-    version = "5.3.3"
+    version = "5.4.0"
 
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
