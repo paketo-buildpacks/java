@@ -1,7 +1,9 @@
 # `gcr.io/paketo-buildpacks/java`
+
 The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition suitable for Java applications.
 
 ## Included Buildpacks
+
 * [`paketo-buildpacks/apache-tomcat`](https://github.com/paketo-buildpacks/apache-tomcat)
 * [`paketo-buildpacks/azure-application-insights`](https://github.com/paketo-buildpacks/azure-application-insights)
 * [`paketo-buildpacks/bellsoft-liberica`](https://github.com/paketo-buildpacks/bellsoft-liberica)
@@ -17,6 +19,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/jattach`](https://github.com/paketo-buildpacks/jattach)
 * [`paketo-buildpacks/java-memory-assistant`](https://github.com/paketo-buildpacks/java-memory-assistant)
 * [`paketo-buildpacks/leiningen`](https://github.com/paketo-buildpacks/leiningen)
+* [`paketo-buildpacks/liberty`](https://github.com/paketo-buildpacks/liberty)
 * [`paketo-buildpacks/maven`](https://github.com/paketo-buildpacks/maven)
 * [`paketo-buildpacks/procfile`](https://github.com/paketo-buildpacks/procfile)
 * [`paketo-buildpacks/sbt`](https://github.com/paketo-buildpacks/sbt)
@@ -25,6 +28,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 * [`paketo-buildpacks/watchexec`](https://github.com/paketo-buildpacks/watchexec)
 
 ## License
+
 This buildpack is released under version 2.0 of the [Apache License][a].
 
 [a]: http://www.apache.org/licenses/LICENSE-2.0
