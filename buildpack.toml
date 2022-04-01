@@ -88,7 +88,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/dist-zip"
     optional = true
-    version = "5.2.0"
+    version = "5.2.1"
 
   [[order.group]]
     id = "paketo-buildpacks/spring-boot"
