@@ -16,7 +16,7 @@ api = "0.7"
 
 [buildpack]
   description = "A Cloud Native Buildpack with an order definition suitable for Java applications"
-  homepage = "https://github.com/paketo-buildpacks/java"
+  homepage = "https://paketo.io/docs/howto/java"
   id = "paketo-buildpacks/java"
   keywords = ["java", "composite"]
   name = "Paketo Java Buildpack"
