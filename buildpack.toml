@@ -38,7 +38,7 @@ api = "0.7"
 
   [[order.group]]
     id = "paketo-buildpacks/bellsoft-liberica"
-    version = "9.2.0"
+    version = "9.3.0"
 
   [[order.group]]
     id = "paketo-buildpacks/syft"
