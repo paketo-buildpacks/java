@@ -5,6 +5,7 @@ The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition s
 ## Included Buildpacks
 
 * [`paketo-buildpacks/apache-tomcat`](https://github.com/paketo-buildpacks/apache-tomcat)
+* [`paketo-buildpacks/apache-tomee`](https://github.com/paketo-buildpacks/apache-tomee)
 * [`paketo-buildpacks/azure-application-insights`](https://github.com/paketo-buildpacks/azure-application-insights)
 * [`paketo-buildpacks/bellsoft-liberica`](https://github.com/paketo-buildpacks/bellsoft-liberica)
 * [`paketo-buildpacks/ca-certificates`](https://github.com/paketo-buildpacks/ca-certificates)
