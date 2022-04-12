@@ -86,6 +86,11 @@ api = "0.7"
     version = "7.3.1"
 
   [[order.group]]
+    id = "paketo-buildpacks/apache-tomee"
+    optional = true
+    version = "1.0.0"
+
+  [[order.group]]
     id = "paketo-buildpacks/liberty"
     optional = true
     version = "1.0.1"
