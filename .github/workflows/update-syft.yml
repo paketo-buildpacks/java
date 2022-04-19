@@ -16,7 +16,7 @@ jobs:
                 password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
                 registry: gcr.io
                 username: _json_key
-            - uses: actions/setup-go@v2
+            - uses: actions/setup-go@v3
               with:
                 go-version: "1.17"
             - name: Install update-package-dependency
@@ -118,7 +118,7 @@ jobs:
                 echo "::set-output name=version-label::${LABEL}"
               env:
                 DEPENDENCY: gcr.io/paketo-buildpacks/syft
-            - uses: peter-evans/create-pull-request@v3
+            - uses: peter-evans/create-pull-request@v4
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/syft`](https://gcr.io/paketo-buildpacks/syft) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/syft:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/syft:${{ steps.package.outputs.new-version }}).
