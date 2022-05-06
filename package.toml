@@ -42,7 +42,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.2.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.9.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.10.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/procfile:5.1.1"
