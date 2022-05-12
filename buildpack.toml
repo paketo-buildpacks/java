@@ -58,7 +58,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/gradle"
     optional = true
-    version = "6.4.2"
+    version = "6.4.3"
 
   [[order.group]]
     id = "paketo-buildpacks/maven"
