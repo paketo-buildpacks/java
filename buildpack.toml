@@ -123,7 +123,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
     optional = true
-    version = "5.8.0"
+    version = "5.9.0"
 
   [[order.group]]
     id = "paketo-buildpacks/datadog"
