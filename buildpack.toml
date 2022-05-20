@@ -43,7 +43,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/syft"
     optional = true
-    version = "1.11.0"
+    version = "1.11.1"
 
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
@@ -123,7 +123,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
     optional = true
-    version = "5.9.0"
+    version = "5.10.0"
 
   [[order.group]]
     id = "paketo-buildpacks/datadog"
