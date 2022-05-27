@@ -103,7 +103,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/spring-boot"
     optional = true
-    version = "5.10.0"
+    version = "5.11.0"
 
   [[order.group]]
     id = "paketo-buildpacks/procfile"
