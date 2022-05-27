@@ -1,72 +1,72 @@
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.2.2"
+  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.2.3"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.3.4"
+  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.3.5"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/syft:1.11.1"
+  uri = "docker://gcr.io/paketo-buildpacks/syft:1.11.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.3.2"
+  uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.3.3"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.4.2"
+  uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.4.3"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.4.3"
+  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.4.4"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/maven:6.5.2"
+  uri = "docker://gcr.io/paketo-buildpacks/maven:6.5.3"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/sbt:6.4.2"
+  uri = "docker://gcr.io/paketo-buildpacks/sbt:6.4.3"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.4.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.2.3"
+  uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.2.4"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:7.3.5"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/apache-tomee:1.0.3"
+  uri = "docker://gcr.io/paketo-buildpacks/apache-tomee:1.0.4"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/liberty:1.1.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.2.3"
+  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.2.4"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.10.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.11.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.1.1"
+  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.1.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/jattach:1.0.1"
+  uri = "docker://gcr.io/paketo-buildpacks/jattach:1.0.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.4.3"
+  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.4.4"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.10.0"
+  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.10.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/datadog:1.5.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.0.0"
+  uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.0.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.1.1"
+  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.1.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.1.1"
+  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.1.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.1.1"
+  uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.1.2"

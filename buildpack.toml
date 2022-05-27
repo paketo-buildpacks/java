@@ -34,51 +34,51 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/ca-certificates"
     optional = true
-    version = "3.2.2"
+    version = "3.2.3"
 
   [[order.group]]
     id = "paketo-buildpacks/bellsoft-liberica"
-    version = "9.3.4"
+    version = "9.3.5"
 
   [[order.group]]
     id = "paketo-buildpacks/syft"
     optional = true
-    version = "1.11.1"
+    version = "1.11.2"
 
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
     optional = true
-    version = "4.3.2"
+    version = "4.3.3"
 
   [[order.group]]
     id = "paketo-buildpacks/clojure-tools"
     optional = true
-    version = "2.4.2"
+    version = "2.4.3"
 
   [[order.group]]
     id = "paketo-buildpacks/gradle"
     optional = true
-    version = "6.4.3"
+    version = "6.4.4"
 
   [[order.group]]
     id = "paketo-buildpacks/maven"
     optional = true
-    version = "6.5.2"
+    version = "6.5.3"
 
   [[order.group]]
     id = "paketo-buildpacks/sbt"
     optional = true
-    version = "6.4.2"
+    version = "6.4.3"
 
   [[order.group]]
     id = "paketo-buildpacks/watchexec"
     optional = true
-    version = "2.4.0"
+    version = "2.4.1"
 
   [[order.group]]
     id = "paketo-buildpacks/executable-jar"
     optional = true
-    version = "6.2.3"
+    version = "6.2.4"
 
   [[order.group]]
     id = "paketo-buildpacks/apache-tomcat"
@@ -88,7 +88,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/apache-tomee"
     optional = true
-    version = "1.0.3"
+    version = "1.0.4"
 
   [[order.group]]
     id = "paketo-buildpacks/liberty"
@@ -98,32 +98,32 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/dist-zip"
     optional = true
-    version = "5.2.3"
+    version = "5.2.4"
 
   [[order.group]]
     id = "paketo-buildpacks/spring-boot"
     optional = true
-    version = "5.10.0"
+    version = "5.11.0"
 
   [[order.group]]
     id = "paketo-buildpacks/procfile"
     optional = true
-    version = "5.1.1"
+    version = "5.1.2"
 
   [[order.group]]
     id = "paketo-buildpacks/jattach"
     optional = true
-    version = "1.0.1"
+    version = "1.0.2"
 
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
     optional = true
-    version = "5.4.3"
+    version = "5.4.4"
 
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
     optional = true
-    version = "5.10.0"
+    version = "5.10.1"
 
   [[order.group]]
     id = "paketo-buildpacks/datadog"
@@ -133,19 +133,19 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/java-memory-assistant"
     optional = true
-    version = "1.0.0"
+    version = "1.0.1"
 
   [[order.group]]
     id = "paketo-buildpacks/encrypt-at-rest"
     optional = true
-    version = "4.1.1"
+    version = "4.1.2"
 
   [[order.group]]
     id = "paketo-buildpacks/environment-variables"
     optional = true
-    version = "4.1.1"
+    version = "4.1.2"
 
   [[order.group]]
     id = "paketo-buildpacks/image-labels"
     optional = true
-    version = "4.1.1"
+    version = "4.1.2"
