@@ -57,7 +57,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.11.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/datadog:1.6.0"
+  uri = "docker://gcr.io/paketo-buildpacks/datadog:1.7.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.0.1"
