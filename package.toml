@@ -24,7 +24,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/sbt:6.4.3"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.5.0"
+  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.5.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.2.4"
@@ -42,7 +42,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.2.4"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.12.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.13.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/procfile:5.1.2"
@@ -54,7 +54,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.5.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.11.2"
+  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:5.11.3"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/datadog:1.7.0"
