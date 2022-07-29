@@ -27,7 +27,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.5.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.2.4"
+  uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.2.5"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:7.3.9"
