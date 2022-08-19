@@ -48,7 +48,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/procfile:5.2.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/jattach:1.0.3"
+  uri = "docker://gcr.io/paketo-buildpacks/jattach:1.1.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.5.2"
