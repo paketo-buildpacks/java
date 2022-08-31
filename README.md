@@ -1,6 +1,6 @@
 # `gcr.io/paketo-buildpacks/java`
 
-The Paketo Java Buildpack is a Cloud Native Buildpack with an order definition suitable for Java applications.
+The Paketo Buildpack for Java is a Cloud Native Buildpack with an order definition suitable for Java applications.
 
 ## Included Buildpacks
 
