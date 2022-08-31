@@ -19,7 +19,7 @@ api = "0.7"
   homepage = "https://paketo.io/docs/howto/java"
   id = "paketo-buildpacks/java"
   keywords = ["java", "composite"]
-  name = "Paketo Java Buildpack"
+  name = "Paketo Buildpack for Java"
   version = "{{.version}}"
 
   [[buildpack.licenses]]
