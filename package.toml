@@ -24,7 +24,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/sbt:6.8.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.6.0"
+  uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.7.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.4.0"
