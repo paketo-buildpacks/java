@@ -17,4 +17,5 @@ linux/
 dependencies/
 package/
 scratch/
-
+target
+*.cnb
