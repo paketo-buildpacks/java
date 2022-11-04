@@ -6,7 +6,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.10.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/syft:1.21.0"
+  uri = "docker://gcr.io/paketo-buildpacks/syft:1.22.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.4.0"
@@ -42,7 +42,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.4.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.19.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.20.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/procfile:5.4.0"
@@ -51,13 +51,13 @@
   uri = "docker://gcr.io/paketo-buildpacks/jattach:1.2.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.8.0"
+  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.9.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:6.7.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/datadog:2.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/datadog:2.5.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.1.0"

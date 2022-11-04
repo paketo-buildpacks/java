@@ -43,7 +43,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/syft"
     optional = true
-    version = "1.21.0"
+    version = "1.22.0"
 
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
@@ -103,7 +103,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/spring-boot"
     optional = true
-    version = "5.19.0"
+    version = "5.20.0"
 
   [[order.group]]
     id = "paketo-buildpacks/procfile"
@@ -118,7 +118,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
     optional = true
-    version = "5.8.0"
+    version = "5.9.0"
 
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
@@ -128,7 +128,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/datadog"
     optional = true
-    version = "2.4.0"
+    version = "2.5.0"
 
   [[order.group]]
     id = "paketo-buildpacks/java-memory-assistant"
