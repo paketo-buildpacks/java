@@ -15,7 +15,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.6.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.8.0"
+  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.9.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/maven:6.11.0"
