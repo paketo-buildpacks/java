@@ -45,7 +45,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.20.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.5.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/jattach:1.2.0"
