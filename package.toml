@@ -1,21 +1,21 @@
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.5.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.10.0"
+  uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.10.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/syft:1.22.1"
+  uri = "docker://gcr.io/paketo-buildpacks/syft:1.23.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.4.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.6.0"
+  uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.6.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.8.0"
+  uri = "docker://gcr.io/paketo-buildpacks/gradle:6.10.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/maven:6.11.0"
@@ -30,43 +30,43 @@
   uri = "docker://gcr.io/paketo-buildpacks/executable-jar:6.5.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:7.8.0"
+  uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:7.9.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/apache-tomee:1.4.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/liberty:2.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/liberty:3.1.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.4.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.20.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.22.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.4.0"
+  uri = "docker://gcr.io/paketo-buildpacks/procfile:5.5.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/jattach:1.2.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.9.0"
+  uri = "docker://gcr.io/paketo-buildpacks/azure-application-insights:5.9.4"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:6.7.0"
+  uri = "docker://gcr.io/paketo-buildpacks/google-stackdriver:7.0.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/datadog:2.5.0"
+  uri = "docker://gcr.io/paketo-buildpacks/datadog:3.1.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.1.0"
+  uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.2.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.3.0"
+  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.3.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.3.0"
+  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.4.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.3.0"
