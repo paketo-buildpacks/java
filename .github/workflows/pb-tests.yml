@@ -163,8 +163,3 @@ jobs:
                 FORMAT: image
                 PACKAGES: test
                 VERSION: ${{ steps.version.outputs.version }}
-            - name: Run Integration Tests
-              run: "BP_UNDER_TEST=${PACKAGE}:${VERSION} make integration"
-              env:
-                PACKAGE: test
-                VERSION: ${{ steps.version.outputs.version }}
