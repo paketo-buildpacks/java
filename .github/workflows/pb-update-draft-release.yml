@@ -12,19 +12,26 @@ jobs:
             - id: release-drafter
               uses: release-drafter/release-drafter@v5
               env:
-                GITHUB_TOKEN: ${{ secrets.JAVA_GITHUB_TOKEN }}
+                GITHUB_TOKEN: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
             - name: Docker login gcr.io
               if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
               uses: docker/login-action@v2
               with:
-                password: ${{ secrets.JAVA_GCLOUD_SERVICE_ACCOUNT_KEY }}
+                password: ${{ secrets.GCR_PUSH_BOT_JSON_KEY }}
                 registry: gcr.io
                 username: _json_key
+            - name: Docker login docker.io
+              if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
+              uses: docker/login-action@v2
+              with:
+                password: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_PASSWORD }}
+                registry: docker.io
+                username: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_USERNAME }}
             - uses: actions/checkout@v3
             - name: Update draft release with buildpack information
               uses: docker://ghcr.io/paketo-buildpacks/actions/draft-release:main
               with:
-                github_token: ${{ secrets.JAVA_GITHUB_TOKEN }}
+                github_token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
                 release_body: ${{ steps.release-drafter.outputs.body }}
                 release_id: ${{ steps.release-drafter.outputs.id }}
                 release_name: ${{ steps.release-drafter.outputs.name }}
