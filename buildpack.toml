@@ -56,6 +56,16 @@ api = "0.7"
     version = "2.7.0"
 
   [[order.group]]
+    id = "paketo-buildpacks/yarn"
+    optional = true
+    version = "1.0.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/node-engine"
+    optional = true
+    version = "1.1.0"
+
+  [[order.group]]
     id = "paketo-buildpacks/gradle"
     optional = true
     version = "6.10.0"
