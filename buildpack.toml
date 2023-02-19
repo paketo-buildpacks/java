@@ -41,6 +41,16 @@ api = "0.7"
     version = "9.10.3"
 
   [[order.group]]
+    id = "paketo-buildpacks/yarn"
+    optional = true
+    version = "1.0.0"
+
+  [[order.group]]
+    id = "paketo-buildpacks/node-engine"
+    optional = true
+    version = "1.1.0"
+
+  [[order.group]]
     id = "paketo-buildpacks/syft"
     optional = true
     version = "1.24.2"
@@ -54,16 +64,6 @@ api = "0.7"
     id = "paketo-buildpacks/clojure-tools"
     optional = true
     version = "2.7.0"
-
-  [[order.group]]
-    id = "paketo-buildpacks/yarn"
-    optional = true
-    version = "1.0.0"
-
-  [[order.group]]
-    id = "paketo-buildpacks/node-engine"
-    optional = true
-    version = "1.1.0"
 
   [[order.group]]
     id = "paketo-buildpacks/gradle"
