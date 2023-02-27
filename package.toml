@@ -6,6 +6,12 @@
   uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:9.10.3"
 
 [[dependencies]]
+  uri = "docker://gcr.io/paketo-buildpacks/yarn:1.0.0"
+
+[[dependencies]]
+  uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.1.0"
+
+[[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/syft:1.24.2"
 
 [[dependencies]]
@@ -13,12 +19,6 @@
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.7.0"
-
-[[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/yarn:1.0.0"
-
-[[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.1.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/gradle:6.10.0"
