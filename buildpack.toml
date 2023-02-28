@@ -78,7 +78,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/executable-jar"
     optional = true
-    version = "6.6.0"
+    version = "6.6.1"
 
   [[order.group]]
     id = "paketo-buildpacks/apache-tomcat"
