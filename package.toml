@@ -60,7 +60,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/datadog:3.5.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.2.0"
+  uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.3.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.3.3"
