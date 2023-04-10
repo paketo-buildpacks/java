@@ -25,7 +25,7 @@ jobs:
                 username: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_USERNAME }}
             - uses: actions/setup-go@v4
               with:
-                go-version: "1.18"
+                go-version: "1.20"
             - name: Install update-package-dependency
               run: |
                 #!/usr/bin/env bash
@@ -125,7 +125,7 @@ jobs:
                 echo "version-label=${LABEL}" >> "$GITHUB_OUTPUT"
               env:
                 DEPENDENCY: gcr.io/paketo-buildpacks/executable-jar
-            - uses: peter-evans/create-pull-request@v4
+            - uses: peter-evans/create-pull-request@v5
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/executable-jar`](https://gcr.io/paketo-buildpacks/executable-jar) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/executable-jar:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/executable-jar:${{ steps.package.outputs.new-version }}).
