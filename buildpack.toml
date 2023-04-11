@@ -158,4 +158,4 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/image-labels"
     optional = true
-    version = "4.4.1"
+    version = "4.4.2"
