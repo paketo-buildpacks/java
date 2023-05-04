@@ -42,7 +42,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/apache-tomee:1.6.1"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/liberty:3.6.0"
+  uri = "docker://gcr.io/paketo-buildpacks/liberty:3.7.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.5.2"
