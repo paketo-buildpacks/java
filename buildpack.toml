@@ -103,7 +103,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/liberty"
     optional = true
-    version = "3.6.0"
+    version = "3.7.0"
 
   [[order.group]]
     id = "paketo-buildpacks/dist-zip"
