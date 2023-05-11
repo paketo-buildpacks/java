@@ -9,7 +9,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/yarn:1.1.6"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.5.0"
+  uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.5.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/syft:1.29.0"
