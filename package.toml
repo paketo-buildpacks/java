@@ -6,7 +6,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:10.2.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/yarn:1.1.6"
+  uri = "docker://gcr.io/paketo-buildpacks/yarn:1.1.7"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.5.0"
