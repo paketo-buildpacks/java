@@ -118,7 +118,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/procfile"
     optional = true
-    version = "5.6.2"
+    version = "5.6.3"
 
   [[order.group]]
     id = "paketo-buildpacks/jattach"
