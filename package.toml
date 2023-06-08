@@ -1,4 +1,3 @@
-
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.6.2"
 
@@ -12,7 +11,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.5.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/syft:1.30.1"
+  uri = "docker://gcr.io/paketo-buildpacks/syft:1.31.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.6.2"
