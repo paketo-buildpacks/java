@@ -1,4 +1,3 @@
-
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.6.2"
 
