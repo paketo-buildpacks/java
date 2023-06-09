@@ -74,4 +74,4 @@
   uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.5.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.5.0"
+  uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.5.1"
