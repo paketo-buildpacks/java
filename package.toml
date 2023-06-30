@@ -14,7 +14,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/syft:1.32.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.6.3"
+  uri = "docker://gcr.io/paketo-buildpacks/leiningen:4.6.4"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/clojure-tools:2.8.4"
