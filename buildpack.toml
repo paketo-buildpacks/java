@@ -38,7 +38,7 @@ api = "0.7"
 
   [[order.group]]
     id = "paketo-buildpacks/bellsoft-liberica"
-    version = "10.2.7"
+    version = "10.2.8"
 
   [[order.group]]
     id = "paketo-buildpacks/yarn"
