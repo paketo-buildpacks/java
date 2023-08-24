@@ -48,7 +48,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/node-engine"
     optional = true
-    version = "1.7.0"
+    version = "1.8.0"
 
   [[order.group]]
     id = "paketo-buildpacks/syft"

@@ -8,7 +8,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/yarn:1.1.10"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.7.0"
+  uri = "docker://gcr.io/paketo-buildpacks/node-engine:1.8.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/syft:1.34.0"
