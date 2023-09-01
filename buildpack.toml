@@ -128,7 +128,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
     optional = true
-    version = "5.15.3"
+    version = "5.15.4"
 
   [[order.group]]
     id = "paketo-buildpacks/google-stackdriver"
