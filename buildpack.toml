@@ -123,7 +123,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/jattach"
     optional = true
-    version = "1.4.4"
+    version = "1.4.5"
 
   [[order.group]]
     id = "paketo-buildpacks/azure-application-insights"
