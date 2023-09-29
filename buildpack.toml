@@ -73,7 +73,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/maven"
     optional = true
-    version = "6.15.7"
+    version = "6.15.8"
 
   [[order.group]]
     id = "paketo-buildpacks/sbt"
