@@ -68,7 +68,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/java-memory-assistant:1.4.8"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.5.11"
+  uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.5.12"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.5.6"
