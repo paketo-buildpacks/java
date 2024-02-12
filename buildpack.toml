@@ -159,3 +159,8 @@ api = "0.7"
     id = "paketo-buildpacks/image-labels"
     optional = true
     version = "4.5.5"
+
+  [[order.group]]
+    id = "paketo-buildpacks/opentelemetry"
+    optional = true
+    version = "1.7.0"

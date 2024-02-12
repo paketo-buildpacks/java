@@ -30,6 +30,7 @@ The Paketo Buildpack for Java is a Cloud Native Buildpack with an order definiti
 * [`paketo-buildpacks/spring-boot`](https://github.com/paketo-buildpacks/spring-boot)
 * [`paketo-buildpacks/syft`](https://github.com/paketo-buildpacks/syft)
 * [`paketo-buildpacks/watchexec`](https://github.com/paketo-buildpacks/watchexec)
+* [`paketo-buildpacks/opentelemetry`](https://github.com/paketo-buildpacks/opentelemetry)
 
 ## License
 
