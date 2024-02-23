@@ -1,5 +1,5 @@
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.6.7"
+  uri = "docker://gcr.io/paketo-buildpacks/ca-certificates:3.6.8"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/bellsoft-liberica:10.5.2"
