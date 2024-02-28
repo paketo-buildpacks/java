@@ -11,14 +11,14 @@ jobs:
         steps:
             - name: Docker login gcr.io
               if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
-              uses: docker/login-action@v2
+              uses: docker/login-action@v3
               with:
                 password: ${{ secrets.GCR_PUSH_BOT_JSON_KEY }}
                 registry: gcr.io
                 username: _json_key
             - name: Docker login docker.io
               if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
-              uses: docker/login-action@v2
+              uses: docker/login-action@v3
               with:
                 password: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_PASSWORD }}
                 registry: docker.io
@@ -33,46 +33,10 @@ jobs:
                 set -euo pipefail
 
                 go install -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/update-package-dependency@latest
-            - name: Install crane
-              run: |
-                #!/usr/bin/env bash
-
-                set -euo pipefail
-
-                echo "Installing crane ${CRANE_VERSION}"
-
-                mkdir -p "${HOME}"/bin
-                echo "${HOME}/bin" >> "${GITHUB_PATH}"
-
-                curl \
-                  --show-error \
-                  --silent \
-                  --location \
-                  "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
-                | tar -C "${HOME}/bin" -xz crane
-              env:
-                CRANE_VERSION: 0.18.0
-            - name: Install yj
-              run: |
-                #!/usr/bin/env bash
-
-                set -euo pipefail
-
-                echo "Installing yj ${YJ_VERSION}"
-
-                mkdir -p "${HOME}"/bin
-                echo "${HOME}/bin" >> "${GITHUB_PATH}"
-
-                curl \
-                  --location \
-                  --show-error \
-                  --silent \
-                  --output "${HOME}"/bin/yj \
-                  "https://github.com/sclevine/yj/releases/download/v${YJ_VERSION}/yj-linux-amd64"
-
-                chmod +x "${HOME}"/bin/yj
-              env:
-                YJ_VERSION: 5.1.0
+            - uses: buildpacks/github-actions/setup-tools@v5.5.3
+              with:
+                crane-version: 0.19.0
+                yj-version: 5.1.0
             - uses: actions/checkout@v4
             - name: Update Package Dependency
               id: package
@@ -125,7 +89,7 @@ jobs:
                 echo "version-label=${LABEL}" >> "$GITHUB_OUTPUT"
               env:
                 DEPENDENCY: gcr.io/paketo-buildpacks/executable-jar
-            - uses: peter-evans/create-pull-request@v5
+            - uses: peter-evans/create-pull-request@v6
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/executable-jar`](https://gcr.io/paketo-buildpacks/executable-jar) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/executable-jar:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/executable-jar:${{ steps.package.outputs.new-version }}).
