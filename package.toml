@@ -38,7 +38,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/apache-tomcat:7.15.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/apache-tomee:1.8.1"
+  uri = "docker://gcr.io/paketo-buildpacks/apache-tomee:1.8.2"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/liberty:4.0.1"
