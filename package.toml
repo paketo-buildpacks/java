@@ -23,7 +23,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/gradle:7.9.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/maven:6.15.14"
+  uri = "docker://gcr.io/paketo-buildpacks/maven:6.16.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/sbt:6.12.13"
