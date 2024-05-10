@@ -75,3 +75,11 @@
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.6.0"
+
+[[targets]]
+os = "linux"
+arch = "amd64"
+
+[[targets]]
+os = "linux"
+arch = "arm64"
