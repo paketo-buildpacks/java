@@ -26,7 +26,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/maven:6.15.14"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/sbt:6.12.13"
+  uri = "docker://gcr.io/paketo-buildpacks/sbt:6.13.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/watchexec:2.9.0"
