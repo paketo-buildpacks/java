@@ -47,7 +47,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.7.0"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.29.0"
+  uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.29.1"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/procfile:5.8.0"
@@ -77,9 +77,9 @@
   uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.6.0"
 
 [[targets]]
-os = "linux"
-arch = "amd64"
+  arch = "amd64"
+  os = "linux"
 
 [[targets]]
-os = "linux"
-arch = "arm64"
+  arch = "arm64"
+  os = "linux"
