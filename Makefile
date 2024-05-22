@@ -1,5 +1,5 @@
 VERSION?=$(shell git describe --tags --dirty=-dirty)
-BP_UNDER_TEST?="../java-buildpack.cnb"
+BP_UNDER_TEST?="java-buildpack.cnb"
 
 clean:
 	rm -fr target
@@ -19,7 +19,7 @@ package: create-package
 	pack buildpack package ${BP_UNDER_TEST} --format=file --config ./target/package.toml
 
 integration:
-	BP_UNDER_TEST=${BP_UNDER_TEST} INCLUDE_INTEGRATION_TESTS=true go test -v -count=1 -timeout=20m ./integration --ginkgo.label-filter integration --ginkgo.v
+	BP_UNDER_TEST=../${BP_UNDER_TEST} INCLUDE_INTEGRATION_TESTS=true go test -v -count=1 -timeout=20m ./integration --ginkgo.label-filter integration --ginkgo.v
 
 .PHONY: integration pre-integration package create-package clean
  

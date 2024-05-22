@@ -45,6 +45,7 @@ var _ = Describe("SpringBoot", Label("integration"), func() {
 
 	DescribeTable("SpringBoot Tests",
 		func(appPath string, envVars map[string]string, runtimeMatchers []types.GomegaMatcher) {
+			envVars["BP_ARCH"] = "amd64"
 			imageName, err := occam.RandomName()
 			Expect(err).ToNot(HaveOccurred())
 
@@ -77,12 +78,12 @@ var _ = Describe("SpringBoot", Label("integration"), func() {
 				}
 			})
 		},
-		Entry("Java 8", springBootApp, map[string]string{
-			"BP_JVM_VERSION": "8",
-		}, []types.GomegaMatcher{ContainSubstring("java.version=1.8.0")}),
-		// Entry("Java 11", springBootApp, map[string]string{
-		// 	"BP_JVM_VERSION": "11",
-		// }, []types.GomegaMatcher{ContainSubstring("java.version=11")}),
+		// Entry("Java 8", springBootApp, map[string]string{
+		// 	"BP_JVM_VERSION": "8",
+		// }, []types.GomegaMatcher{ContainSubstring("java.version=1.8.0")}),
+		Entry("Java 11", springBootApp, map[string]string{
+			"BP_JVM_VERSION": "11",
+		}, []types.GomegaMatcher{ContainSubstring("java.version=11")}),
 		// Entry("Java 17", springBootApp, map[string]string{
 		// 	"BP_JVM_VERSION": "17",
 		// }, []types.GomegaMatcher{ContainSubstring("java.version=17")}),

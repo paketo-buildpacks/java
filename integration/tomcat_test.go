@@ -46,6 +46,7 @@ var _ = Describe("Tomcat", Label("integration"), func() {
 
 	DescribeTable("Tomcat Tests",
 		func(appPath string, envVars map[string]string, runtimeMatchers []types.GomegaMatcher, tomcatMatcher types.GomegaMatcher) {
+			envVars["BP_ARCH"] = "amd64"
 			imageName, err := occam.RandomName()
 			Expect(err).ToNot(HaveOccurred())
 
