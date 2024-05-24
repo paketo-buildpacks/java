@@ -71,7 +71,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/encrypt-at-rest:4.6.2"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.6.0"
+  uri = "docker://gcr.io/paketo-buildpacks/environment-variables:4.7.0"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/image-labels:4.7.0"
