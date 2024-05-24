@@ -34,7 +34,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/ca-certificates"
     optional = true
-    version = "3.7.0"
+    version = "3.8.0"
 
   [[order.group]]
     id = "paketo-buildpacks/bellsoft-liberica"
