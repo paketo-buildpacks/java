@@ -4,13 +4,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/sclevine/spec"
-
 	. "github.com/onsi/gomega"
 	"github.com/paketo-buildpacks/occam"
+	"github.com/sclevine/spec"
 )
 
-func testTomee(t *testing.T, context spec.G, it spec.S) {
+func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
 	var (
 		Expect = NewWithT(t).Expect
 
@@ -29,20 +28,19 @@ func testTomee(t *testing.T, context spec.G, it spec.S) {
 		Expect(docker.Image.Remove.Execute(image.ID)).To(Succeed())
 	})
 
-	it("uses TomEE as the app server", func() {
+	it("uses precompiled executable jar", func() {
 		imageName, err := occam.RandomName()
 		Expect(err).ToNot(HaveOccurred())
 
 		image, buildLogs, err = pack.WithNoColor().Build.
 			WithBuildpacks(buildPack).
 			WithEnv(map[string]string{
-				"BP_ARCH":            "amd64",
-				"BP_JAVA_APP_SERVER": "tomee",
+				"BP_ARCH": "amd64",
 			}).
 			WithBuilder(builder).
 			WithTrustBuilder().
 			WithPullPolicy("if-not-present").
-			Execute(imageName, "samples/java/war/target/demo-0.0.1-SNAPSHOT.war")
+			Execute(imageName, "samples/java/jar")
 		Expect(err).ToNot(HaveOccurred())
 		Expect(buildLogs.String()).ToNot(BeEmpty())
 		Expect(len(image.Buildpacks)).To(BeNumerically(">", 0))

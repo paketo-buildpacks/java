@@ -1,5 +1,5 @@
 VERSION?=$(shell git describe --tags --dirty=-dirty)
-BP_UNDER_TEST?="../java-buildpack.cnb"
+export BP_UNDER_TEST ?= "java-buildpack:$(VERSION)"
 
 clean:
 	rm -fr target
@@ -16,10 +16,12 @@ create-package:
 	echo "os = \"linux\"" >> ./target/package.toml
 
 package: create-package
-	pack buildpack package ${BP_UNDER_TEST} --format=file --config ./target/package.toml
+	pack buildpack package ${BP_UNDER_TEST} --format=image --config ./target/package.toml
 
-integration:
-	BP_UNDER_TEST=${BP_UNDER_TEST} INCLUDE_INTEGRATION_TESTS=true go test -v -count=1 -timeout=20m ./integration --ginkgo.label-filter integration --ginkgo.v
+integration: samples
+	go test -v -count=1 -timeout=20m ./integration
 
-.PHONY: integration pre-integration package create-package clean
- 
+samples:
+	test -d integration/samples && git -C integration/samples pull || git clone https://github.com/paketo-buildpacks/samples integration/samples
+
+.PHONY: integration pre-integration package create-package clean samples
