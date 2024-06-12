@@ -1,6 +1,9 @@
 package integration_test
 
 import (
+	"fmt"
+	"net/http"
+	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -9,14 +12,16 @@ import (
 
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/format"
+	"github.com/paketo-buildpacks/occam"
 	"github.com/sclevine/spec"
 	"github.com/sclevine/spec/report"
 )
 
 var (
-	buildPack = os.Getenv("BP_UNDER_TEST")
-	builder   = "paketobuildpacks/builder-jammy-buildpackless-base"
-	err       error
+	buildPack      = os.Getenv("BP_UNDER_TEST")
+	builder        = "paketobuildpacks/builder-jammy-buildpackless-base"
+	testContainers = occam.NewTestContainers()
+	err            error
 )
 
 func TestIntegration(t *testing.T) {
@@ -41,4 +46,19 @@ func TestIntegration(t *testing.T) {
 	Expect(err).NotTo(HaveOccurred(), "failed to precompile war package, output:\n%s", out)
 
 	suite.Run(t)
+}
+
+func makeRequest(path, port string) (*http.Response, error) {
+	fullURL, err := url.Parse(fmt.Sprintf("http://localhost:%s", port))
+	if err != nil {
+		return nil, err
+	}
+	fullURL.Path = path
+
+	resp, err := http.Get(fullURL.String())
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
 }

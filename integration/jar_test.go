@@ -4,9 +4,13 @@ import (
 	"fmt"
 	"testing"
 
+	ctx "context"
+
 	. "github.com/onsi/gomega"
 	"github.com/paketo-buildpacks/occam"
 	"github.com/sclevine/spec"
+	"github.com/testcontainers/testcontainers-go"
+	"github.com/testcontainers/testcontainers-go/wait"
 )
 
 func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
@@ -16,6 +20,7 @@ func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
 		pack      occam.Pack
 		docker    occam.Docker
 		image     occam.Image
+		container testcontainers.Container
 		buildLogs fmt.Stringer
 	)
 
@@ -25,6 +30,7 @@ func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
 	})
 
 	it.After(func() {
+		Expect(container.Terminate(ctx.Background())).To(Succeed())
 		Expect(docker.Image.Remove.Execute(image.ID)).To(Succeed())
 	})
 
@@ -44,5 +50,14 @@ func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).ToNot(HaveOccurred())
 		Expect(buildLogs.String()).ToNot(BeEmpty())
 		Expect(len(image.Buildpacks)).To(BeNumerically(">", 0))
+
+		container, err = testContainers.WithExposedPorts("8080/tcp").WithWaitingFor(wait.ForLog("Started DemoApplication in")).Execute(imageName)
+		Expect(err).NotTo(HaveOccurred())
+		mappedPort, err := container.MappedPort(ctx.Background(), "8080/tcp")
+		Expect(err).ShouldNot(HaveOccurred())
+		resp, err := makeRequest("/actuator/health", mappedPort.Port())
+		Expect(err).ShouldNot(HaveOccurred())
+		defer resp.Body.Close()
+		Expect(resp.StatusCode).To(Equal(200))
 	})
 }
