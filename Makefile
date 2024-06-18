@@ -1,5 +1,5 @@
-VERSION?=$(shell git describe --tags --dirty=-dirty)
-export BP_UNDER_TEST ?= "java-buildpack:$(VERSION)"
+VERSION?=$(shell git describe --tags  --abbrev=0 | cut -c2-  )
+export BP_UNDER_TEST ?= "paketobuildpacks/java:$(VERSION)"
 
 clean:
 	rm -fr target
