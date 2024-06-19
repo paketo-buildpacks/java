@@ -177,16 +177,58 @@ jobs:
                 fi
               env:
                 FORMAT: image
-                PACKAGES: test
-                TTL_SH_PUBLISH: "false"
-                VERSION: ${{ steps.version.outputs.version }}
-            - name: Set up JDK
-              uses: actions/setup-java@v4
-              with:
-                java-version: '17'
-                distribution: 'liberica'
+                PACKAGES: ttl.sh/test-${{ steps.version.outputs.version }}
+                TTL_SH_PUBLISH: "true"
+                VERSION: 1h
             - name: Run Integration Tests
-              run: "BP_UNDER_TEST=${PACKAGE}:${VERSION} make integration"
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                go test ./integration/... -run Integration
               env:
                 PACKAGE: test
                 VERSION: ${{ steps.version.outputs.version }}
+    unit:
+        name: Unit Test
+        runs-on:
+            - ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/cache@v4
+              with:
+                key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+                path: ${{ env.HOME }}/go/pkg/mod
+                restore-keys: ${{ runner.os }}-go-
+            - uses: actions/setup-go@v5
+              with:
+                go-version: "1.22"
+            - name: Install richgo
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                echo "Installing richgo ${RICHGO_VERSION}"
+
+                mkdir -p "${HOME}"/bin
+                echo "${HOME}/bin" >> "${GITHUB_PATH}"
+
+                curl \
+                  --location \
+                  --show-error \
+                  --silent \
+                  "https://github.com/kyoh86/richgo/releases/download/v${RICHGO_VERSION}/richgo_${RICHGO_VERSION}_linux_amd64.tar.gz" \
+                | tar -C "${HOME}"/bin -xz richgo
+              env:
+                RICHGO_VERSION: 0.3.10
+            - name: Run Tests
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                richgo test ./... -run Unit
+              env:
+                RICHGO_FORCE_COLOR: "1"
