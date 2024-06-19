@@ -180,3 +180,13 @@ jobs:
                 PACKAGES: test
                 TTL_SH_PUBLISH: "false"
                 VERSION: ${{ steps.version.outputs.version }}
+            - name: Set up JDK
+              uses: actions/setup-java@v4
+              with:
+                java-version: '17'
+                distribution: 'liberica'
+            - name: Run Integration Tests
+              run: "BP_UNDER_TEST=${PACKAGE}:${VERSION} make integration"
+              env:
+                PACKAGE: test
+                VERSION: ${{ steps.version.outputs.version }}
