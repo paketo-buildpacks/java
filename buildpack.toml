@@ -143,7 +143,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/java-memory-assistant"
     optional = true
-    version = "1.6.1"
+    version = "1.6.2"
 
   [[order.group]]
     id = "paketo-buildpacks/encrypt-at-rest"
