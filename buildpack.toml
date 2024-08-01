@@ -78,7 +78,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/sbt"
     optional = true
-    version = "6.15.1"
+    version = "6.15.2"
 
   [[order.group]]
     id = "paketo-buildpacks/watchexec"
