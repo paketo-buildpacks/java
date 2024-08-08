@@ -138,7 +138,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/datadog"
     optional = true
-    version = "5.18.0"
+    version = "5.19.0"
 
   [[order.group]]
     id = "paketo-buildpacks/java-memory-assistant"
