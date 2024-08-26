@@ -33,7 +33,7 @@ jobs:
                 set -euo pipefail
 
                 go install -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/update-package-dependency@latest
-            - uses: buildpacks/github-actions/setup-tools@v5.6.0
+            - uses: buildpacks/github-actions/setup-tools@v5.7.2
               with:
                 crane-version: 0.19.1
                 yj-version: 5.1.0
@@ -93,7 +93,7 @@ jobs:
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`gcr.io/paketo-buildpacks/datadog`](https://gcr.io/paketo-buildpacks/datadog) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/datadog:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/datadog:${{ steps.package.outputs.new-version }}).
-                branch: update/package/datadog
+                branch: update/packages
                 commit-message: |-
                     Bump gcr.io/paketo-buildpacks/datadog from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
 
