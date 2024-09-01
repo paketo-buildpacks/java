@@ -39,11 +39,17 @@ func TestIntegration(t *testing.T) {
 	suite("Tomcat", testTomcat)
 	suite("TomEE", testTomee)
 
-	cmd := exec.Command("./mvnw", "-DskipTests=true", "clean", "package")
+	cmd := exec.Command("./gradlew", "clean", "build", "-x", "test")
 	cmd.Dir, err = filepath.Abs("./samples/java/war/")
 	Expect(err).To(Succeed())
 	out, err := cmd.CombinedOutput()
 	Expect(err).NotTo(HaveOccurred(), "failed to precompile war package, output:\n%s", out)
+
+	cmd = exec.Command("./mvnw", "-DskipTests=true", "clean", "package")
+	cmd.Dir, err = filepath.Abs("./samples/java/war-spring/")
+	Expect(err).To(Succeed())
+	out, err = cmd.CombinedOutput()
+	Expect(err).NotTo(HaveOccurred(), "failed to precompile war-spring package, output:\n%s", out)
 
 	suite.Run(t)
 }

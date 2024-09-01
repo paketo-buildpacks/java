@@ -47,7 +47,7 @@ func testTomee(t *testing.T, context spec.G, it spec.S) {
 			WithBuilder(builder).
 			WithTrustBuilder().
 			WithPullPolicy("if-not-present").
-			Execute(imageName, "samples/java/war/target/demo-0.0.1-SNAPSHOT.war")
+			Execute(imageName, "samples/java/war/build/libs/war-0.0.1-SNAPSHOT.war")
 		Expect(err).ToNot(HaveOccurred())
 		Expect(buildLogs.String()).ToNot(BeEmpty())
 		Expect(len(image.Buildpacks)).To(BeNumerically(">", 0))
