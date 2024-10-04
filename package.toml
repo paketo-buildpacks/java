@@ -44,7 +44,7 @@
   uri = "docker://gcr.io/paketo-buildpacks/liberty:4.2.5"
 
 [[dependencies]]
-  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.8.4"
+  uri = "docker://gcr.io/paketo-buildpacks/dist-zip:5.8.5"
 
 [[dependencies]]
   uri = "docker://gcr.io/paketo-buildpacks/spring-boot:5.31.2"
