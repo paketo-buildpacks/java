@@ -148,7 +148,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/encrypt-at-rest"
     optional = true
-    version = "4.8.0"
+    version = "4.8.1"
 
   [[order.group]]
     id = "paketo-buildpacks/environment-variables"
