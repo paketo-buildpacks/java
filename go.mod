@@ -5,8 +5,8 @@ go 1.23.0
 toolchain go1.23.3
 
 require (
-	github.com/onsi/gomega v1.35.1
-	github.com/paketo-buildpacks/occam v0.19.0
+	github.com/onsi/gomega v1.36.0
+	github.com/paketo-buildpacks/occam v0.20.0
 	github.com/sclevine/spec v1.4.0
 	github.com/testcontainers/testcontainers-go v0.34.0
 )
