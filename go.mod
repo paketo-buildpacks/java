@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/onsi/gomega v1.36.2
-	github.com/paketo-buildpacks/occam v0.22.0
+	github.com/paketo-buildpacks/occam v0.23.0
 	github.com/sclevine/spec v1.4.0
 	github.com/testcontainers/testcontainers-go v0.35.0
 )
