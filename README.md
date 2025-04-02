@@ -1,4 +1,7 @@
-# `gcr.io/paketo-buildpacks/java`
+# Paketo Buildpack for Java
+
+## Buildpack ID: `paketo-buildpacks/java`
+## Registry URLs: `docker.io/paketobuildpacks/java`
 
 The Paketo Buildpack for Java is a Cloud Native Buildpack with an order definition suitable for Java applications.
 
