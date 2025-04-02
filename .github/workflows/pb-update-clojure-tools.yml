@@ -9,13 +9,6 @@ jobs:
         runs-on:
             - ubuntu-latest
         steps:
-            - name: Docker login gcr.io
-              if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
-              uses: docker/login-action@v3
-              with:
-                password: ${{ secrets.GCR_PUSH_BOT_JSON_KEY }}
-                registry: gcr.io
-                username: _json_key
             - name: Docker login docker.io
               if: ${{ (github.event_name != 'pull_request' || ! github.event.pull_request.head.repo.fork) && (github.actor != 'dependabot[bot]') }}
               uses: docker/login-action@v3
@@ -88,18 +81,19 @@ jobs:
                 echo "new-version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
                 echo "version-label=${LABEL}" >> "$GITHUB_OUTPUT"
               env:
-                DEPENDENCY: gcr.io/paketo-buildpacks/clojure-tools
+                BP_DEPENDENCY: docker.io/paketo-buildpacks/clojure-tools
+                DEPENDENCY: docker.io/paketobuildpacks/clojure-tools
             - uses: peter-evans/create-pull-request@v6
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
-                body: Bumps [`gcr.io/paketo-buildpacks/clojure-tools`](https://gcr.io/paketo-buildpacks/clojure-tools) from [`${{ steps.package.outputs.old-version }}`](https://gcr.io/paketo-buildpacks/clojure-tools:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://gcr.io/paketo-buildpacks/clojure-tools:${{ steps.package.outputs.new-version }}).
+                body: Bumps [`docker.io/paketobuildpacks/clojure-tools`](https://docker.io/paketobuildpacks/clojure-tools) from [`${{ steps.package.outputs.old-version }}`](https://docker.io/paketobuildpacks/clojure-tools:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://docker.io/paketobuildpacks/clojure-tools:${{ steps.package.outputs.new-version }}).
                 branch: update/package/clojure-tools
                 commit-message: |-
-                    Bump gcr.io/paketo-buildpacks/clojure-tools from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+                    Bump docker.io/paketobuildpacks/clojure-tools from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
 
-                    Bumps gcr.io/paketo-buildpacks/clojure-tools from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
+                    Bumps docker.io/paketobuildpacks/clojure-tools from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}.
                 delete-branch: true
                 labels: ${{ steps.package.outputs.version-label }}, type:dependency-upgrade
                 signoff: true
-                title: Bump gcr.io/paketo-buildpacks/clojure-tools from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
+                title: Bump docker.io/paketobuildpacks/clojure-tools from ${{ steps.package.outputs.old-version }} to ${{ steps.package.outputs.new-version }}
                 token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
