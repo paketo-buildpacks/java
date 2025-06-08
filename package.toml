@@ -74,7 +74,7 @@
   uri = "docker://docker.io/paketobuildpacks/environment-variables:4.9.0"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/image-labels:4.9.0"
+  uri = "docker://docker.io/paketobuildpacks/image-labels:4.10.0"
 
 [[targets]]
   arch = "amd64"
