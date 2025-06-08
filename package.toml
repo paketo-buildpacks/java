@@ -71,7 +71,7 @@
   uri = "docker://docker.io/paketobuildpacks/encrypt-at-rest:4.9.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/environment-variables:4.9.0"
+  uri = "docker://docker.io/paketobuildpacks/environment-variables:4.9.1"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/image-labels:4.9.0"
