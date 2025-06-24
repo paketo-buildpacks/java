@@ -1,5 +1,5 @@
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/ca-certificates:3.10.2"
+  uri = "docker://docker.io/paketobuildpacks/ca-certificates:3.10.3"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/bellsoft-liberica:11.2.3"
