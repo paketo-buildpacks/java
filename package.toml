@@ -53,7 +53,7 @@
   uri = "docker://docker.io/paketobuildpacks/procfile:5.11.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/jattach:1.10.1"
+  uri = "docker://docker.io/paketobuildpacks/jattach:1.10.2"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/azure-application-insights:5.26.0"
