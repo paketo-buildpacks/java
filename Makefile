@@ -19,7 +19,7 @@ package: create-package
 	pack buildpack package ${BP_UNDER_TEST} --format=image --config ./target/package.toml
 
 integration: samples
-	go test -v -count=1 -timeout=20m ./integration
+	TESTCONTAINERS_RYUK_DISABLED=true TESTCONTAINERS_RYUK_CONTAINER_PRIVILEGED=true go test -v -count=1 -timeout=20m ./integration
 
 samples:
 	test -d integration/samples && git -C integration/samples pull || git clone https://github.com/paketo-buildpacks/samples integration/samples
