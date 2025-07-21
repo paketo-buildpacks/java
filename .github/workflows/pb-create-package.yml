@@ -168,7 +168,7 @@ jobs:
                     done
                 else
                   if [ -n "$TTL_SH_PUBLISH" ] && [ "$TTL_SH_PUBLISH" = "true" ]; then
-                    TAG="${PACKAGE}-$(mktemp -u XXXXX):${VERSION}"
+                    TAG="${PACKAGE}-$(mktemp -u XXXXX | awk '{print tolower($0)}'):${VERSION}"
                     pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}" --publish
                   else
                     pack -v buildpack package "${PACKAGE}:${VERSION}" ${CONFIG} --format "${FORMAT}"
