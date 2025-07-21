@@ -158,15 +158,17 @@ jobs:
                         crane tag "${P}:${VERSION}" latest
                       fi
                     done
-
                 else
-                  pack -v buildpack package \
-                    "${PACKAGE}:${VERSION}" ${CONFIG} \
-                    --format "${FORMAT}" $([ -n "$TTL_SH_PUBLISH" ] && [ "$TTL_SH_PUBLISH" = "true" ] && echo "--publish")
+                  if [ -n "$TTL_SH_PUBLISH" ] && [ "$TTL_SH_PUBLISH" = "true" ]; then
+                    TAG="${PACKAGE}-$(mktemp -u XXXXX):${VERSION}"
+                    pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}" --publish
+                  else
+                    pack -v buildpack package "${PACKAGE}:${VERSION}" ${CONFIG} --format "${FORMAT}"
+                  fi
                 fi
               env:
                 FORMAT: image
-                PACKAGES: ttl.sh/test-${{ steps.version.outputs.version }}
+                PACKAGES: ttl.sh/paketo-java-test-${{ steps.version.outputs.version }}
                 TTL_SH_PUBLISH: "true"
                 VERSION: 1h
             - name: Set up JDK
