@@ -171,8 +171,11 @@ jobs:
                     TAG="${PACKAGE}-$(mktemp -u XXXXX | awk '{print tolower($0)}'):${VERSION}"
                     pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}" --publish
                   else
-                    pack -v buildpack package "${PACKAGE}:${VERSION}" ${CONFIG} --format "${FORMAT}"
+                    TAG="${PACKAGE}:${VERSION}"
+                    pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}"
                   fi
+
+                  echo "ttl-image-tag=${TAG:-}" >> "$GITHUB_OUTPUT"
                 fi
               env:
                 PACKAGES: docker.io/paketobuildpacks/java

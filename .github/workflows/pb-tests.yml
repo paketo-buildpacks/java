@@ -115,6 +115,7 @@ jobs:
                 OS: linux
                 VERSION: ${{ steps.version.outputs.version }}
             - name: Package Buildpack
+              id: package-buildpack
               run: |-
                 #!/usr/bin/env bash
 
@@ -163,8 +164,11 @@ jobs:
                     TAG="${PACKAGE}-$(mktemp -u XXXXX | awk '{print tolower($0)}'):${VERSION}"
                     pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}" --publish
                   else
-                    pack -v buildpack package "${PACKAGE}:${VERSION}" ${CONFIG} --format "${FORMAT}"
+                    TAG="${PACKAGE}:${VERSION}"
+                    pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}"
                   fi
+
+                  echo "ttl-image-tag=${TAG:-}" >> "$GITHUB_OUTPUT"
                 fi
               env:
                 FORMAT: image
@@ -182,7 +186,8 @@ jobs:
 
                 set -euo pipefail
 
-                BP_UNDER_TEST=ttl.sh/${PACKAGE}-${VERSION}:1h make integration
+                make integration
               env:
+                BP_UNDER_TEST: ${{ steps.package-buildpack.outputs.ttl-image-tag}}
                 PACKAGE: test
                 VERSION: ${{ steps.version.outputs.version }}
