@@ -2,7 +2,7 @@
   uri = "docker://docker.io/paketobuildpacks/ca-certificates:3.10.3"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/bellsoft-liberica:11.2.5"
+  uri = "docker://docker.io/paketobuildpacks/bellsoft-liberica:11.2.6"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/yarn:2.0.5"
