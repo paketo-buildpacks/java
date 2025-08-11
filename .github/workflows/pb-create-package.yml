@@ -34,16 +34,13 @@ jobs:
               with:
                 pack-version: 0.36.4
             - name: Enable pack Experimental
-              if: ${{ false }}
               run: |
                 #!/usr/bin/env bash
 
                 set -euo pipefail
 
                 echo "Enabling pack experimental features"
-
-                mkdir -p "${HOME}"/.pack
-                echo "experimental = true" >> "${HOME}"/.pack/config.toml
+                pack config experimental true
             - uses: actions/checkout@v4
             - if: ${{ false }}
               uses: actions/cache@v4
@@ -135,7 +132,7 @@ jobs:
                 cd "${COMPILED_BUILDPACK}"
                 CONFIG=""
                 if [ -f "${COMPILED_BUILDPACK}/package.toml" ]; then
-                  CONFIG="--config ${COMPILED_BUILDPACK}/package.toml"
+                  CONFIG="--config ${COMPILED_BUILDPACK}/package.toml --flatten"
                 fi
 
                 PACKAGE_LIST=($PACKAGES)
