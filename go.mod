@@ -2,6 +2,8 @@ module github.com/paketo-buildpacks/java
 
 go 1.24.5
 
+toolchain go1.24.6
+
 require (
 	github.com/onsi/gomega v1.38.0
 	github.com/paketo-buildpacks/occam v0.28.1
