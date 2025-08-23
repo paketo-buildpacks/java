@@ -14,7 +14,7 @@
   uri = "docker://docker.io/paketobuildpacks/syft:2.18.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/leiningen:4.12.2"
+  uri = "docker://docker.io/paketobuildpacks/leiningen:4.12.3"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/clojure-tools:2.15.1"
