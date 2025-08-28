@@ -4,6 +4,8 @@ github.com/AdaLogics/go-fuzz-headers v0.0.0-20240806141605-e8a1dd7889d6 h1:He8af
 github.com/AdaLogics/go-fuzz-headers v0.0.0-20240806141605-e8a1dd7889d6/go.mod h1:8o94RPi1/7XTJvwPpRSzSUedZrtlirdB3r9Z20bi2f8=
 github.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c h1:udKWzYgxTojEKWjV8V+WSxDXJ4NFATAsZjh8iIbsQIg=
 github.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c/go.mod h1:xomTg63KZ2rFqZQzSB4Vz2SUXa1BpHTVz9L5PTmPC4E=
+github.com/BurntSushi/toml v1.5.0 h1:W5quZX/G/csjUnuI8SUYlsHs9M38FC7znL0lIO+DvMg=
+github.com/BurntSushi/toml v1.5.0/go.mod h1:ukJfTF/6rtPPRCnwkur4qwRxa8vTRFBF0uk2lLoLwho=
 github.com/Masterminds/semver/v3 v3.4.0 h1:Zog+i5UMtVoCU8oKka5P7i9q9HgrJeGzI9SA1Xbatp0=
 github.com/Masterminds/semver/v3 v3.4.0/go.mod h1:4V+yj/TJE1HU9XfppCwVMZq3I84lprf4nC11bSS5beM=
 github.com/Microsoft/go-winio v0.6.2 h1:F2VQgta7ecxGYO8k3ZZz3RS8fVIXVxONVUPlNERoyfY=
@@ -117,10 +119,10 @@ github.com/opencontainers/go-digest v1.0.0 h1:apOUWs51W5PlhuyGyz9FCeeBIOUDA/6nW8
 github.com/opencontainers/go-digest v1.0.0/go.mod h1:0JzlMkj0TRzQZfJkVvzbP0HBR3IKzErnv2BNG4W4MAM=
 github.com/opencontainers/image-spec v1.1.1 h1:y0fUlFfIZhPF1W537XOLg0/fcx6zcHCJwooC2xJA040=
 github.com/opencontainers/image-spec v1.1.1/go.mod h1:qpqAh3Dmcf36wStyyWU+kCeDgrGnAve2nCC8+7h8Q0M=
-github.com/paketo-buildpacks/freezer v0.2.1 h1:6XpdAgK6DMC8lme/ndKmnsmmssPTWfuomM7NmsjDedo=
-github.com/paketo-buildpacks/freezer v0.2.1/go.mod h1:rsuH8ILZKMokRkCPxpZtngICCDKPsEuWGTBqDpvwiws=
-github.com/paketo-buildpacks/occam v0.28.1 h1:Lbx5MbLfbkiF08Eb0Jtf9l88wK8w+oQjvzjrdccVrxE=
-github.com/paketo-buildpacks/occam v0.28.1/go.mod h1:vakX67VSG26Q8F9SgSoQNu1p7pIUrZvisNr42xdmuko=
+github.com/paketo-buildpacks/freezer v0.2.2 h1:p0qcGMQ54uGMzDFNkfpDpxddNl8+OTqt3teAWIkmCu4=
+github.com/paketo-buildpacks/freezer v0.2.2/go.mod h1:8dkcCqZKYFKxDV4MuooIR/Fr/LmpXqpr8R9mFvkGerE=
+github.com/paketo-buildpacks/occam v0.29.1 h1:75yqeESfI3HKAYkhyZSzFb4Ahz/mZHRC9XTxs/PoHrg=
+github.com/paketo-buildpacks/occam v0.29.1/go.mod h1:LaPnQFsDhQyXC7dfKXsLcBblTXEsN49A3gCfMnjFlD0=
 github.com/paketo-buildpacks/packit/v2 v2.23.0 h1:9v01l0wymOMCvSIfflPa5vy+NmeFU2egU8qRL4PtYYs=
 github.com/paketo-buildpacks/packit/v2 v2.23.0/go.mod h1:Sd7qAaRFYnGk75FFxY6rGJqhKmTEd+5q2gTUHGFYW+w=
 github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
