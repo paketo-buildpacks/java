@@ -43,7 +43,7 @@ func testTomee(t *testing.T, context spec.G, it spec.S) {
 			WithEnv(map[string]string{
 				"BP_ARCH":            "amd64",
 				"BP_JAVA_APP_SERVER": "tomee",
-				"BP_TOMEE_VERSION":   "9.0",
+				"BP_TOMEE_VERSION":   "10.1",
 			}).
 			WithBuilder(builder).
 			WithTrustBuilder().
