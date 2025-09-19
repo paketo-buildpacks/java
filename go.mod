@@ -8,7 +8,7 @@ require (
 	github.com/onsi/gomega v1.38.2
 	github.com/paketo-buildpacks/occam v0.30.0
 	github.com/sclevine/spec v1.4.0
-	github.com/testcontainers/testcontainers-go v0.38.0
+	github.com/testcontainers/testcontainers-go v0.39.0
 )
 
 require (
