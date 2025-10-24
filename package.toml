@@ -5,7 +5,7 @@
   uri = "docker://docker.io/paketobuildpacks/bellsoft-liberica:11.4.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/yarn:2.2.4"
+  uri = "docker://docker.io/paketobuildpacks/yarn:2.2.6"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/node-engine:7.7.1"
