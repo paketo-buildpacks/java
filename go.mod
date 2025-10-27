@@ -6,7 +6,7 @@ toolchain go1.24.9
 
 require (
 	github.com/onsi/gomega v1.38.2
-	github.com/paketo-buildpacks/occam v0.30.2
+	github.com/paketo-buildpacks/occam v0.31.0
 	github.com/sclevine/spec v1.4.0
 	github.com/testcontainers/testcontainers-go v0.39.0
 )
@@ -38,7 +38,7 @@ require (
 	github.com/google/go-containerregistry v0.20.6 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3 // indirect
-	github.com/klauspost/compress v1.18.0 // indirect
+	github.com/klauspost/compress v1.18.1 // indirect
 	github.com/lufia/plan9stats v0.0.0-20251013123823-9fd1530e3ec3 // indirect
 	github.com/magiconair/properties v1.8.10 // indirect
 	github.com/moby/docker-image-spec v1.3.1 // indirect
