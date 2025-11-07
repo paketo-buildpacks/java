@@ -29,7 +29,7 @@
   uri = "docker://docker.io/paketobuildpacks/sbt:6.19.9"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/watchexec:3.5.4"
+  uri = "docker://docker.io/paketobuildpacks/watchexec:3.5.5"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/executable-jar:6.13.3"
