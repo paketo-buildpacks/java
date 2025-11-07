@@ -56,7 +56,7 @@
   uri = "docker://docker.io/paketobuildpacks/jattach:1.10.3"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/azure-application-insights:6.0.1"
+  uri = "docker://docker.io/paketobuildpacks/azure-application-insights:6.0.2"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/google-stackdriver:10.0.0"
