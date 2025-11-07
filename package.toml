@@ -17,7 +17,7 @@
   uri = "docker://docker.io/paketobuildpacks/leiningen:4.13.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/clojure-tools:2.15.6"
+  uri = "docker://docker.io/paketobuildpacks/clojure-tools:2.15.7"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/gradle:8.0.0"
