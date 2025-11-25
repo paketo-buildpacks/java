@@ -43,7 +43,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/yarn"
     optional = true
-    version = "2.2.9"
+    version = "2.2.10"
 
   [[order.group]]
     id = "paketo-buildpacks/node-engine"
