@@ -38,7 +38,7 @@
   uri = "docker://docker.io/paketobuildpacks/apache-tomcat:8.8.3"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/apache-tomee:1.16.1"
+  uri = "docker://docker.io/paketobuildpacks/apache-tomee:1.16.2"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/liberty:6.0.0"
