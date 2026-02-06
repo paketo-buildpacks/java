@@ -20,7 +20,7 @@
   uri = "docker://docker.io/paketobuildpacks/clojure-tools:2.16.2"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/gradle:8.2.1"
+  uri = "docker://docker.io/paketobuildpacks/gradle:8.2.2"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/maven:6.21.2"
