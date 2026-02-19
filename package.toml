@@ -76,6 +76,9 @@
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/image-labels:4.11.1"
 
+[[dependencies]]
+  uri = "docker://docker.io/paketobuildpacks/opentelemetry:2.21.1"
+
 [[targets]]
   arch = "amd64"
   os = "linux"
