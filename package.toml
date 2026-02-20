@@ -50,7 +50,7 @@
   uri = "docker://docker.io/paketobuildpacks/spring-boot:5.35.2"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/procfile:5.12.1"
+  uri = "docker://docker.io/paketobuildpacks/procfile:5.13.0"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/jattach:1.12.0"
