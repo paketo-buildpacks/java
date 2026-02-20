@@ -35,7 +35,7 @@
   uri = "docker://docker.io/paketobuildpacks/executable-jar:6.14.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/apache-tomcat:8.8.4"
+  uri = "docker://docker.io/paketobuildpacks/apache-tomcat:8.9.0"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/apache-tomee:1.16.2"
