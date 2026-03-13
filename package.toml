@@ -41,7 +41,7 @@
   uri = "docker://docker.io/paketobuildpacks/apache-tomee:1.17.0"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/liberty:6.1.0"
+  uri = "docker://docker.io/paketobuildpacks/liberty:6.1.2"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/dist-zip:5.12.0"
