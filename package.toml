@@ -8,7 +8,7 @@
   uri = "docker://docker.io/paketobuildpacks/yarn:2.2.22"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/node-engine:8.0.3"
+  uri = "docker://docker.io/paketobuildpacks/node-engine:8.0.6"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/syft:2.31.0"
