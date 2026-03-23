@@ -1,10 +1,10 @@
 module github.com/paketo-buildpacks/java
 
-go 1.26
+go 1.26.1
 
 require (
 	github.com/onsi/gomega v1.39.1
-	github.com/paketo-buildpacks/occam v0.31.1
+	github.com/paketo-buildpacks/occam v0.31.2
 	github.com/sclevine/spec v1.4.0
 	github.com/testcontainers/testcontainers-go v0.41.0
 )
