@@ -16,7 +16,7 @@ jobs:
                 password: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_PASSWORD }}
                 registry: docker.io
                 username: ${{ secrets.PAKETO_BUILDPACKS_DOCKERHUB_USERNAME }}
-            - uses: actions/setup-go@v5
+            - uses: actions/setup-go@v6
               with:
                 go-version: "1.26"
             - name: Install update-package-dependency
@@ -26,11 +26,11 @@ jobs:
                 set -euo pipefail
 
                 go install -ldflags="-s -w" github.com/paketo-buildpacks/libpak/cmd/update-package-dependency@latest
-            - uses: buildpacks/github-actions/setup-tools@v5.11.0
+            - uses: buildpacks/github-actions/setup-tools@v5.12.0
               with:
                 crane-version: 0.20.3
                 yj-version: 5.1.0
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - name: Update Package Dependency
               id: package
               run: |
@@ -83,7 +83,7 @@ jobs:
               env:
                 BP_DEPENDENCY: docker.io/paketo-buildpacks/image-labels
                 DEPENDENCY: docker.io/paketobuildpacks/image-labels
-            - uses: peter-evans/create-pull-request@v6
+            - uses: peter-evans/create-pull-request@v8
               with:
                 author: ${{ secrets.JAVA_GITHUB_USERNAME }} <${{ secrets.JAVA_GITHUB_USERNAME }}@users.noreply.github.com>
                 body: Bumps [`docker.io/paketobuildpacks/image-labels`](https://docker.io/paketobuildpacks/image-labels) from [`${{ steps.package.outputs.old-version }}`](https://docker.io/paketobuildpacks/image-labels:${{ steps.package.outputs.old-version }}) to [`${{ steps.package.outputs.new-version }}`](https://docker.io/paketobuildpacks/image-labels:${{ steps.package.outputs.new-version }}).
