@@ -28,6 +28,7 @@ The Paketo Buildpack for Java is a Cloud Native Buildpack with an order definiti
 * [`paketo-buildpacks/leiningen`](https://github.com/paketo-buildpacks/leiningen)
 * [`paketo-buildpacks/liberty`](https://github.com/paketo-buildpacks/liberty)
 * [`paketo-buildpacks/maven`](https://github.com/paketo-buildpacks/maven)
+* [`paketo-buildpacks/opentelemetry`](https://github.com/paketo-buildpacks/opentelemetry)
 * [`paketo-buildpacks/procfile`](https://github.com/paketo-buildpacks/procfile)
 * [`paketo-buildpacks/sbt`](https://github.com/paketo-buildpacks/sbt)
 * [`paketo-buildpacks/spring-boot`](https://github.com/paketo-buildpacks/spring-boot)
