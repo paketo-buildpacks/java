@@ -32,7 +32,7 @@
   uri = "docker://docker.io/paketobuildpacks/watchexec:3.9.3"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/executable-jar:6.15.1"
+  uri = "docker://docker.io/paketobuildpacks/executable-jar:6.15.2"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/apache-tomcat:8.9.5"
