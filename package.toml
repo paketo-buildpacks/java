@@ -83,3 +83,11 @@
 [[targets]]
   arch = "arm64"
   os = "linux"
+
+[[targets]]
+  arch = "s390x"
+  os = "linux"
+
+[[targets]]
+  arch = "ppc64le"
+  os = "linux"
