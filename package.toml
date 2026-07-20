@@ -68,7 +68,7 @@
   uri = "docker://docker.io/paketobuildpacks/java-memory-assistant:1.10.5"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/encrypt-at-rest:4.11.7"
+  uri = "docker://docker.io/paketobuildpacks/encrypt-at-rest:4.11.9"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/environment-variables:4.11.5"
