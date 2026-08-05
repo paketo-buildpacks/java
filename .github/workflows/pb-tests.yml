@@ -112,6 +112,29 @@ jobs:
                 INCLUDE_DEPENDENCIES: "true"
                 OS: linux
                 VERSION: ${{ steps.version.outputs.version }}
+            - name: Disable containerd snapshotter
+              run: |-
+                echo '{"features": {"containerd-snapshotter": false}, "insecure-registries": ["localhost:5000", "127.0.0.1:5000"]}' | sudo tee /etc/docker/daemon.json
+                sudo systemctl restart docker
+            - name: Start Local Registry
+              run: |
+                #!/usr/bin/env bash
+
+                set -euo pipefail
+
+                docker run -d --name local-registry -p 5000:5000 registry:2
+
+                for i in $(seq 1 30); do
+                  if curl -sf http://localhost:5000/v2/ >/dev/null 2>&1; then
+                    echo "Local registry is ready (waited ${i}s)"
+                    exit 0
+                  fi
+                  sleep 1
+                done
+
+                echo "ERROR: local registry did not become ready" >&2
+                docker logs local-registry >&2 || true
+                exit 1
             - name: Package Buildpack
               id: package-buildpack
               run: |-
@@ -158,7 +181,7 @@ jobs:
                       fi
                     done
                 else
-                  if [ -n "$TTL_SH_PUBLISH" ] && [ "$TTL_SH_PUBLISH" = "true" ]; then
+                  if [ -n "$REGISTRY_PUBLISH" ] && [ "$REGISTRY_PUBLISH" = "true" ]; then
                     TAG="${PACKAGE}-$(mktemp -u XXXXX | awk '{print tolower($0)}'):${VERSION}"
                     pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}" --publish
                   else
@@ -166,13 +189,13 @@ jobs:
                     pack -v buildpack package "${TAG}" ${CONFIG} --format "${FORMAT}"
                   fi
 
-                  echo "ttl-image-tag=${TAG:-}" >> "$GITHUB_OUTPUT"
+                  echo "image-tag=${TAG:-}" >> "$GITHUB_OUTPUT"
                 fi
               env:
                 FORMAT: image
-                PACKAGES: ttl.sh/paketo-java-test-${{ steps.version.outputs.version }}
-                TTL_SH_PUBLISH: "true"
-                VERSION: 1h
+                PACKAGES: localhost:5000/paketo-java-test-${{ steps.version.outputs.version }}
+                REGISTRY_PUBLISH: "true"
+                VERSION: latest
             - name: Set up JDK
               uses: actions/setup-java@v5
               with:
@@ -186,6 +209,6 @@ jobs:
 
                 make integration
               env:
-                BP_UNDER_TEST: ${{ steps.package-buildpack.outputs.ttl-image-tag}}
+                BP_UNDER_TEST: ${{ steps.package-buildpack.outputs.image-tag}}
                 PACKAGE: test
                 VERSION: ${{ steps.version.outputs.version }}
