@@ -98,8 +98,8 @@ github.com/opencontainers/image-spec v1.1.1 h1:y0fUlFfIZhPF1W537XOLg0/fcx6zcHCJw
 github.com/opencontainers/image-spec v1.1.1/go.mod h1:qpqAh3Dmcf36wStyyWU+kCeDgrGnAve2nCC8+7h8Q0M=
 github.com/paketo-buildpacks/freezer v0.2.3 h1:nkMNtRFxStXauh/IJdy+2Gc11tJNcfkg7q2LyluwnRM=
 github.com/paketo-buildpacks/freezer v0.2.3/go.mod h1:sVvsjcmT+ee5TTcTfQv0CcY8qtM6+XVdzp0CIvMDTwM=
-github.com/paketo-buildpacks/occam v0.31.3 h1:4EhnaRVzWVHKIKC+XY3f2KQI2EaVJDUY3RmfIojiiQ8=
-github.com/paketo-buildpacks/occam v0.31.3/go.mod h1:dQuEwpCGzohjyfSmzAc0eTTLssPjfIiCXFm7ZvhtdPM=
+github.com/paketo-buildpacks/occam v0.31.4 h1:waJPx4kgzg/NRudzzu+xyophMkRCf8BhjJfIi3ZPsaE=
+github.com/paketo-buildpacks/occam v0.31.4/go.mod h1:Lszw5n4w5+OiH/PvHWTNB6QLPCra7WXVsBumN5/omoI=
 github.com/paketo-buildpacks/packit/v2 v2.25.5 h1:6gPBLx5leUUHzX2cNTdkpA+FWlWel+fGclUiDH4snMI=
 github.com/paketo-buildpacks/packit/v2 v2.25.5/go.mod h1:Tr7vMlkXtXvi59DtMPmgXfr6ITPfJiCe0ROvur1PCvI=
 github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
