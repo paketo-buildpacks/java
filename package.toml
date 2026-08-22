@@ -65,7 +65,7 @@
   uri = "docker://docker.io/paketobuildpacks/datadog:6.13.1"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/java-memory-assistant:1.10.6"
+  uri = "docker://docker.io/paketobuildpacks/java-memory-assistant:1.10.7"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/encrypt-at-rest:4.11.12"
