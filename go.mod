@@ -1,6 +1,6 @@
 module github.com/paketo-buildpacks/java
 
-go 1.26.5
+go 1.27
 
 require (
 	github.com/onsi/gomega v1.42.1
