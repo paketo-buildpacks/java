@@ -59,7 +59,7 @@
   uri = "docker://docker.io/paketobuildpacks/azure-application-insights:6.3.0"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/google-stackdriver:10.2.7"
+  uri = "docker://docker.io/paketobuildpacks/google-stackdriver:10.3.0"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/datadog:6.14.0"
