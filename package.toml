@@ -11,7 +11,7 @@
   uri = "docker://docker.io/paketobuildpacks/node-engine:8.6.2"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/syft:2.40.1"
+  uri = "docker://docker.io/paketobuildpacks/syft:2.41.0"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/leiningen:4.16.3"
