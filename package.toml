@@ -47,7 +47,7 @@
   uri = "docker://docker.io/paketobuildpacks/dist-zip:5.14.2"
 
 [[dependencies]]
-  uri = "docker://docker.io/paketobuildpacks/spring-boot:5.40.1"
+  uri = "docker://docker.io/paketobuildpacks/spring-boot:5.40.3"
 
 [[dependencies]]
   uri = "docker://docker.io/paketobuildpacks/procfile:5.15.4"
