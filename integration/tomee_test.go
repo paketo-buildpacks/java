@@ -39,13 +39,12 @@ func testTomee(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).ToNot(HaveOccurred())
 
 		image, buildLogs, err = pack.WithNoColor().Build.
-			WithBuildpacks(buildPack).
+			WithBuildpacks(javaBuildpack).
 			WithEnv(map[string]string{
 				"BP_ARCH":            "amd64",
 				"BP_JAVA_APP_SERVER": "tomee",
 				"BP_TOMEE_VERSION":   "10.2",
 			}).
-			WithBuilder(builder).
 			WithTrustBuilder().
 			WithPullPolicy("if-not-present").
 			Execute(imageName, "samples/java/war/build/libs/war-0.0.1-SNAPSHOT.war")

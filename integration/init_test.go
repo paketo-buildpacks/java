@@ -18,17 +18,18 @@ import (
 )
 
 var (
-	buildPack      = os.Getenv("BP_UNDER_TEST")
-	builder        = "paketobuildpacks/builder-jammy-buildpackless-base"
+	javaBuildpack  string
 	testContainers = occam.NewTestContainers()
-	err            error
 )
 
 func TestIntegration(t *testing.T) {
 	Expect := NewWithT(t).Expect
-	if buildPack == "" {
-		t.Error("BP_UNDER_TEST is missing")
-	}
+
+	output, err := exec.Command("bash", "-c", "../scripts/package.sh --version 1.2.3").CombinedOutput()
+	Expect(err).NotTo(HaveOccurred(), string(output))
+
+	javaBuildpack, err = filepath.Abs("../build/buildpackage.cnb")
+	Expect(err).NotTo(HaveOccurred())
 
 	format.MaxLength = 0
 	SetDefaultEventuallyTimeout(10 * time.Second)
@@ -38,6 +39,15 @@ func TestIntegration(t *testing.T) {
 	suite("ExecutableJar", testExecutableJar)
 	suite("Tomcat", testTomcat)
 	suite("TomEE", testTomee)
+
+	samplesDir, err := filepath.Abs("./samples")
+	Expect(err).To(Succeed())
+
+	if _, err := os.Stat(samplesDir); os.IsNotExist(err) {
+		cmd := exec.Command("git", "clone", "--depth", "1", "https://github.com/paketo-buildpacks/samples", samplesDir)
+		out, err := cmd.CombinedOutput()
+		Expect(err).NotTo(HaveOccurred(), "failed to clone samples, output:\n%s", out)
+	}
 
 	cmd := exec.Command("./gradlew", "clean", "build", "-x", "test")
 	cmd.Dir, err = filepath.Abs("./samples/java/war/")
