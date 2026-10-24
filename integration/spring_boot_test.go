@@ -39,11 +39,10 @@ func testSpringBoot(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).ToNot(HaveOccurred())
 
 			image, buildLogs, err = pack.WithNoColor().Build.
-				WithBuildpacks(buildPack).
+				WithBuildpacks(javaBuildpack).
 				WithEnv(map[string]string{
 					"BP_ARCH": "amd64",
 				}).
-				WithBuilder(builder).
 				WithTrustBuilder().
 				WithPullPolicy("if-not-present").
 				Execute(imageName, "samples/java/maven")
@@ -68,11 +67,10 @@ func testSpringBoot(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).ToNot(HaveOccurred())
 
 			image, buildLogs, err = pack.WithNoColor().Build.
-				WithBuildpacks(buildPack).
+				WithBuildpacks(javaBuildpack).
 				WithEnv(map[string]string{
 					"BP_ARCH": "amd64",
 				}).
-				WithBuilder(builder).
 				WithTrustBuilder().
 				WithPullPolicy("if-not-present").
 				Execute(imageName, "samples/java/gradle")
