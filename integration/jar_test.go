@@ -57,7 +57,7 @@ func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).ShouldNot(HaveOccurred())
 		resp, err := makeRequest("/actuator/health", mappedPort.Port())
 		Expect(err).ShouldNot(HaveOccurred())
-		defer resp.Body.Close()
+		defer func() { _ = resp.Body.Close() }()
 		Expect(resp.StatusCode).To(Equal(200))
 	})
 }
