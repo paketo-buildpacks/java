@@ -40,12 +40,11 @@ func testTomcat(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).ToNot(HaveOccurred())
 
 			image, buildLogs, err = pack.WithNoColor().Build.
-				WithBuildpacks(buildPack).
+				WithBuildpacks(javaBuildpack).
 				WithEnv(map[string]string{
 					"BP_ARCH":           "amd64",
 					"BP_TOMCAT_VERSION": "10.1",
 				}).
-				WithBuilder(builder).
 				WithTrustBuilder().
 				WithPullPolicy("if-not-present").
 				Execute(imageName, "samples/java/war")
@@ -59,7 +58,7 @@ func testTomcat(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).ShouldNot(HaveOccurred())
 			resp, err := makeRequest("/actuator/health", mappedPort.Port())
 			Expect(err).ShouldNot(HaveOccurred())
-			defer resp.Body.Close()
+			defer func() { _ = resp.Body.Close() }()
 			Expect(resp.StatusCode).To(Equal(200))
 		})
 	})
@@ -70,12 +69,11 @@ func testTomcat(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).ToNot(HaveOccurred())
 
 			image, buildLogs, err = pack.WithNoColor().Build.
-				WithBuildpacks(buildPack).
+				WithBuildpacks(javaBuildpack).
 				WithEnv(map[string]string{
 					"BP_ARCH":           "amd64",
 					"BP_TOMCAT_VERSION": "10.1",
 				}).
-				WithBuilder(builder).
 				WithTrustBuilder().
 				WithPullPolicy("if-not-present").
 				Execute(imageName, "samples/java/war-spring/target/demo-0.0.1-SNAPSHOT.war")
@@ -89,7 +87,7 @@ func testTomcat(t *testing.T, context spec.G, it spec.S) {
 			Expect(err).ShouldNot(HaveOccurred())
 			resp, err := makeRequest("/actuator/health", mappedPort.Port())
 			Expect(err).ShouldNot(HaveOccurred())
-			defer resp.Body.Close()
+			defer func() { _ = resp.Body.Close() }()
 			Expect(resp.StatusCode).To(Equal(200))
 		})
 	})

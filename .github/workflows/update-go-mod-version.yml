@@ -1,0 +1,106 @@
+name: Update Go version
+
+on:
+  schedule:
+    - cron: '13 4 * * MON'  # every monday at 4:13 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: update-go
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  update-go:
+    name: Update go toolchain in go.mod
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Checkout PR Branch
+        uses: paketo-buildpacks/github-config/actions/pull-request/checkout-branch@main
+        with:
+          branch: automation/go-mod-update/update-main
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Go
+        id: setup-go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        # Fetching the latest stable Go version
+        with:
+          go-version: stable
+      - name: Get current go toolchain version
+        id: current-go-version
+        uses: paketo-buildpacks/github-config/actions/update-go-mod-version@main
+        with:
+          go-version: ${{ steps.setup-go.outputs.go-version }}
+      - name: Go mod tidy
+        run: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          shopt -s inherit_errexit
+
+          echo "Before running go mod tidy"
+          echo "head -n10 go.mod "
+          head -n10 go.mod
+
+          echo "git diff"
+          git diff
+
+          echo "Running go mod tidy"
+          go mod tidy
+
+          echo "After running go mod tidy"
+          echo "head -n10 go.mod "
+          head -n10 go.mod
+
+          echo "git diff"
+          git diff
+      - name: Commit
+        id: commit
+        uses: paketo-buildpacks/github-config/actions/pull-request/create-commit@main
+        with:
+          message: "Updates go mod version to ${{ steps.setup-go.outputs.go-version }}"
+          pathspec: "."
+          keyid: ${{ secrets.PAKETO_BOT_GPG_SIGNING_KEY_ID }}
+          key: ${{ secrets.PAKETO_BOT_GPG_SIGNING_KEY }}
+
+      - name: Push Branch
+        if: ${{ steps.commit.outputs.commit_sha != '' }}
+        uses: paketo-buildpacks/github-config/actions/pull-request/push-branch@main
+        with:
+          branch: automation/go-mod-update/update-main
+          token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+
+      - name: Open Pull Request
+        if: ${{ steps.commit.outputs.commit_sha != '' }}
+        uses: paketo-buildpacks/github-config/actions/pull-request/open@main
+        with:
+          token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+          title: "Updates go mod version to ${{ steps.setup-go.outputs.go-version }}"
+          branch: automation/go-mod-update/update-main
+
+  failure:
+    name: Alert on Failure
+    runs-on: ubuntu-24.04
+    needs: [update-go]
+    permissions:
+      contents: read
+      issues: write
+    if: ${{ always() && needs.update-go.result == 'failure' }}
+    steps:
+    - name: File Failure Alert Issue
+      uses: paketo-buildpacks/github-config/actions/issue/file@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repo: ${{ github.repository }}
+        label: "failure:update-go-version"
+        comment_if_exists: true
+        issue_title: "Failure: Update Go Mod Version workflow"
+        comment_body: |
+          Another failure occurred: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}

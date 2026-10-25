@@ -1,0 +1,91 @@
+name: Update buildpack.toml
+
+on:
+  schedule:
+  - cron: '1 6 * * *'  # daily at 06:01 UTC
+  workflow_dispatch: {}
+
+concurrency:
+  group: buildpack_update
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update-buildpack-toml:
+    runs-on: ubuntu-24.04
+    name: Update buildpack.toml
+    permissions:
+      contents: read
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+
+    - name: Checkout Branch
+      uses: paketo-buildpacks/github-config/actions/pull-request/checkout-branch@main
+      with:
+        branch: automation/buildpack.toml/update
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Update buildpack.toml
+      id: update
+      uses: paketo-buildpacks/github-config/actions/buildpack/update@main
+
+    - name: Commit
+      id: commit
+      uses: paketo-buildpacks/github-config/actions/pull-request/create-commit@main
+      with:
+        message: "Updating buildpacks in buildpack.toml"
+        pathspec: "."
+        keyid: ${{ secrets.PAKETO_BOT_GPG_SIGNING_KEY_ID }}
+        key: ${{ secrets.PAKETO_BOT_GPG_SIGNING_KEY }}
+
+    - name: Push Branch
+      if: ${{ steps.commit.outputs.commit_sha != '' }}
+      uses: paketo-buildpacks/github-config/actions/pull-request/push-branch@main
+      with:
+        branch: automation/buildpack.toml/update
+        token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+
+    - name: Open Pull Request (no semver label)
+      if: ${{ steps.commit.outputs.commit_sha != ''  && steps.update.outputs.semver_bump == '' }}
+      uses: paketo-buildpacks/github-config/actions/pull-request/open@main
+      with:
+        token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+        title: "Updates buildpacks in buildpack.toml"
+        branch: automation/buildpack.toml/update
+
+    - name: Open Pull Request
+      if: ${{ steps.commit.outputs.commit_sha != '' && steps.update.outputs.semver_bump != '' }}
+      uses: paketo-buildpacks/github-config/actions/pull-request/open@main
+      with:
+        token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+        title: "Updates buildpacks in buildpack.toml"
+        branch: automation/buildpack.toml/update
+        label: "semver:${{ steps.update.outputs.semver_bump }}"
+
+  failure:
+    name: Alert on Failure
+    runs-on: ubuntu-24.04
+    needs: [update-buildpack-toml]
+    permissions:
+      contents: read
+      issues: write
+    if: ${{ always() && needs.update-buildpack-toml.result == 'failure' }}
+    steps:
+    - name: File Failure Alert Issue
+      uses: paketo-buildpacks/github-config/actions/issue/file@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repo: ${{ github.repository }}
+        label: "failure:update-buildpack-toml"
+        comment_if_exists: true
+        issue_title: "Failure: Update Buildpack TOML workflow"
+        issue_body: |
+          Update Buildpack TOML workflow [failed](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}).
+        comment_body: |
+          Another failure occurred: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}

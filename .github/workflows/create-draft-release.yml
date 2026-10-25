@@ -1,0 +1,163 @@
+name: Create or Update Draft Release
+
+on:
+  push:
+    branches:
+    - main
+  repository_dispatch:
+    types: [ version-bump ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version of the release to cut (e.g. 1.2.3)'
+        required: false
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  builders:
+    name: Get Builders for Testing
+    runs-on: ubuntu-24.04
+    outputs:
+      builders: ${{ steps.builders.outputs.builders }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Get builders from integration.json
+      id: builders
+      run: |
+        source "${GITHUB_WORKSPACE}/scripts/.util/builders.sh"
+
+        builders="$(util::builders::list "${GITHUB_WORKSPACE}/integration.json")"
+        printf "Output: %s\n" "${builders}"
+        printf "builders=%s\n" "${builders}" >> "$GITHUB_OUTPUT"
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-24.04
+    needs: [builders]
+    strategy:
+      matrix:
+        builder: ${{ fromJSON(needs.builders.outputs.builders) }}
+      fail-fast: false  # don't cancel all test jobs when one fails
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Setup Go
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      with:
+        go-version-file: go.mod
+
+    # Causes errors with integration tests
+    - name: Disable containerd snapshotter
+      run: |
+        echo '{"features": {"containerd-snapshotter": false}}' | sudo tee /etc/docker/daemon.json
+        sudo systemctl restart docker
+
+    - name: Run Integration Tests
+      env:
+        TMPDIR: "${{ runner.temp }}"
+        GIT_TOKEN: ${{ github.token }}
+        BUILDER: ${{ matrix.builder }}
+      run: ./scripts/integration.sh --builder "${BUILDER}" --token "${GIT_TOKEN}"
+
+  release:
+    name: Release
+    runs-on: ubuntu-24.04
+    needs: integration
+    permissions:
+      contents: write # create and update the draft release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-tags: true
+        persist-credentials: false
+    - name: Reset Draft Release
+      id: reset
+      uses: paketo-buildpacks/github-config/actions/release/reset-draft@main
+      with:
+        repo: ${{ github.repository }}
+        token: ${{ github.token }}
+    - name: Calculate Semver Tag
+      if: github.event.inputs.version == ''
+      id: semver
+      uses: paketo-buildpacks/github-config/actions/tag/calculate-semver@main
+      with:
+        repo: ${{ github.repository }}
+        token: ${{ github.token }}
+        ref-name: ${{ github.ref_name }}
+    - name: Set Release Tag
+      id: tag
+      env:
+        INPUT_VERSION: ${{ github.event.inputs.version }}
+        SEMVER_TAG: ${{ steps.semver.outputs.tag }}
+      run: |
+        tag="${INPUT_VERSION}"
+        if [ -z "${tag}" ]; then
+          tag="${SEMVER_TAG}"
+        fi
+        echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+    - name: Package
+      env:
+        TAG: ${{ steps.tag.outputs.tag }}
+      run: ./scripts/package.sh --version "${TAG}"
+    - name: Create Release Notes
+      id: create-release-notes
+      uses: paketo-buildpacks/github-config/actions/release/notes@main
+      with:
+        repo: ${{ github.repository }}
+        token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+    - name: Create Draft Release
+      uses: paketo-buildpacks/github-config/actions/release/create@main
+      with:
+        repo: ${{ github.repository }}
+        token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+        tag_name: v${{ steps.tag.outputs.tag }}
+        target_commitish: ${{ github.sha }}
+        name: v${{ steps.tag.outputs.tag }}
+        body: ${{ steps.create-release-notes.outputs.release_body }}
+        draft: true
+        assets: |
+          [
+            {
+              "path": "build/buildpackage.cnb",
+              "name": "${{ github.event.repository.name }}-${{ steps.tag.outputs.tag }}.cnb",
+              "content_type": "application/x-tar"
+            },
+            {
+              "path": "build/buildpack-release-artifact.tgz",
+              "name": "${{ github.event.repository.name }}-${{ steps.tag.outputs.tag }}.tgz",
+              "content_type": "application/gzip"
+            }
+          ]
+
+  failure:
+    name: Alert on Failure
+    runs-on: ubuntu-24.04
+    needs: [ integration, release ]
+    permissions:
+      contents: read
+      issues: write
+    if: ${{ always() && needs.integration.result == 'failure' || needs.release.result == 'failure' }}
+    steps:
+    - name: File Failure Alert Issue
+      uses: paketo-buildpacks/github-config/actions/issue/file@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repo: ${{ github.repository }}
+        label: "failure:release"
+        comment_if_exists: true
+        issue_title: "Failure: Create Draft Release workflow"
+        issue_body: |
+          Create Draft Release workflow [failed](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}).
+        comment_body: |
+           Another failure occurred: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
