@@ -2,61 +2,77 @@ package integration_test
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"testing"
-
-	ctx "context"
 
 	. "github.com/onsi/gomega"
 	"github.com/paketo-buildpacks/occam"
+	. "github.com/paketo-buildpacks/occam/matchers"
 	"github.com/sclevine/spec"
-	"github.com/testcontainers/testcontainers-go"
-	"github.com/testcontainers/testcontainers-go/wait"
 )
 
 func testExecutableJar(t *testing.T, context spec.G, it spec.S) {
 	var (
-		Expect = NewWithT(t).Expect
+		Expect     = NewWithT(t).Expect
+		Eventually = NewWithT(t).Eventually
 
-		pack      occam.Pack
-		docker    occam.Docker
-		image     occam.Image
-		container testcontainers.Container
-		buildLogs fmt.Stringer
+		pack   occam.Pack
+		docker occam.Docker
 	)
 
 	it.Before(func() {
-		pack = occam.NewPack()
+		pack = occam.NewPack().WithNoColor()
 		docker = occam.NewDocker()
 	})
 
-	it.After(func() {
-		Expect(container.Terminate(ctx.Background())).To(Succeed())
-		Expect(docker.Image.Remove.Execute(image.ID)).To(Succeed())
-	})
+	context("precompiled executable jar", func() {
+		var (
+			image     occam.Image
+			container occam.Container
 
-	it("uses precompiled executable jar", func() {
-		imageName, err := occam.RandomName()
-		Expect(err).ToNot(HaveOccurred())
+			name   string
+			source string
+		)
 
-		image, buildLogs, err = pack.WithNoColor().Build.
-			WithBuildpacks(javaBuildpack).
-			WithEnv(map[string]string{
-				"BP_ARCH": "amd64",
-			}).
-			WithTrustBuilder().
-			WithPullPolicy("if-not-present").
-			Execute(imageName, "samples/java/jar")
-		Expect(err).ToNot(HaveOccurred())
-		Expect(buildLogs.String()).ToNot(BeEmpty())
-		Expect(len(image.Buildpacks)).To(BeNumerically(">", 0))
+		it.Before(func() {
+			var err error
+			name, err = occam.RandomName()
+			Expect(err).NotTo(HaveOccurred())
+		})
 
-		container, err = testContainers.WithExposedPorts("8080/tcp").WithWaitingFor(wait.ForLog("Started DemoApplication in")).Execute(imageName)
-		Expect(err).NotTo(HaveOccurred())
-		mappedPort, err := container.MappedPort(ctx.Background(), "8080/tcp")
-		Expect(err).ShouldNot(HaveOccurred())
-		resp, err := makeRequest("/actuator/health", mappedPort.Port())
-		Expect(err).ShouldNot(HaveOccurred())
-		defer func() { _ = resp.Body.Close() }()
-		Expect(resp.StatusCode).To(Equal(200))
+		it.After(func() {
+			Expect(docker.Container.Remove.Execute(container.ID)).To(Succeed())
+			Expect(docker.Volume.Remove.Execute(occam.CacheVolumeNames(name))).To(Succeed())
+			Expect(docker.Image.Remove.Execute(image.ID)).To(Succeed())
+			Expect(os.RemoveAll(source)).To(Succeed())
+		})
+
+		it("uses precompiled executable jar", func() {
+			var err error
+			source, err = occam.Source(filepath.Join("samples", "java", "jar"))
+			Expect(err).NotTo(HaveOccurred())
+
+			var buildLogs fmt.Stringer
+			image, buildLogs, err = pack.Build.
+				WithBuildpacks(javaBuildpack).
+				WithTrustBuilder().
+				WithPullPolicy("never").
+				Execute(name, source)
+			Expect(err).NotTo(HaveOccurred(), buildLogs.String())
+
+			Expect(buildLogs).To(ContainLines(ContainSubstring("Paketo Buildpack for BellSoft Liberica")))
+			Expect(buildLogs).To(ContainLines(ContainSubstring("Paketo Buildpack for Executable JAR")))
+			Expect(buildLogs).To(ContainLines(ContainSubstring("Paketo Buildpack for Spring Boot")))
+
+			container, err = docker.Container.Run.
+				WithEnv(map[string]string{"PORT": "8080"}).
+				WithPublish("8080").
+				Execute(image.ID)
+			Expect(err).NotTo(HaveOccurred())
+
+			Eventually(container).Should(BeAvailable())
+			Eventually(container).Should(Serve(ContainSubstring("UP")).OnPort(8080).WithEndpoint("/actuator/health"))
+		})
 	})
 }

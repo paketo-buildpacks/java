@@ -6,7 +6,6 @@ require (
 	github.com/onsi/gomega v1.44.0
 	github.com/paketo-buildpacks/occam v0.31.4
 	github.com/sclevine/spec v1.4.0
-	github.com/testcontainers/testcontainers-go v0.44.0
 )
 
 require (
@@ -55,6 +54,7 @@ require (
 	github.com/shirou/gopsutil/v4 v4.26.9 // indirect
 	github.com/sirupsen/logrus v1.10.2 // indirect
 	github.com/stretchr/testify v1.12.1 // indirect
+	github.com/testcontainers/testcontainers-go v0.44.0 // indirect
 	github.com/tklauser/go-sysconf v0.4.0 // indirect
 	github.com/tklauser/numcpus v0.12.0 // indirect
 	github.com/ulikunitz/xz v0.5.17 // indirect
