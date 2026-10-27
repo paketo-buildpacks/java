@@ -1,0 +1,5 @@
+{
+  "builders": [
+    "index.docker.io/paketobuildpacks/builder-jammy-buildpackless-base:latest"
+  ]
+}
