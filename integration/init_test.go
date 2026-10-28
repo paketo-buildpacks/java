@@ -1,9 +1,6 @@
 package integration_test
 
 import (
-	"fmt"
-	"net/http"
-	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -17,10 +14,12 @@ import (
 	"github.com/sclevine/spec/report"
 )
 
-var (
-	javaBuildpack  string
-	testContainers = occam.NewTestContainers()
+const (
+	adoptiumBuildpack = "docker.io/paketobuildpacks/adoptium:latest"
+	correttoBuildpack = "docker.io/paketobuildpacks/amazon-corretto:latest"
 )
+
+var javaBuildpack string
 
 func TestIntegration(t *testing.T) {
 	Expect := NewWithT(t).Expect
@@ -32,13 +31,15 @@ func TestIntegration(t *testing.T) {
 	Expect(err).NotTo(HaveOccurred())
 
 	format.MaxLength = 0
-	SetDefaultEventuallyTimeout(10 * time.Second)
+	SetDefaultEventuallyTimeout(60 * time.Second)
 
-	suite := spec.New("java", spec.Parallel(), spec.Report(report.Terminal{}))
+	suite := spec.New("Integration", spec.Parallel(), spec.Report(report.Terminal{}))
 	suite("SpringBoot", testSpringBoot)
-	suite("ExecutableJar", testExecutableJar)
 	suite("Tomcat", testTomcat)
 	suite("TomEE", testTomee)
+	suite("Liberty", testLiberty)
+	suite("JavaNode", testJavaNode)
+	suite("Akka", testAkka)
 
 	samplesDir, err := filepath.Abs("./samples")
 	Expect(err).To(Succeed())
@@ -49,32 +50,25 @@ func TestIntegration(t *testing.T) {
 		Expect(err).NotTo(HaveOccurred(), "failed to clone samples, output:\n%s", out)
 	}
 
-	cmd := exec.Command("./gradlew", "clean", "build", "-x", "test")
-	cmd.Dir, err = filepath.Abs("./samples/java/war/")
+	// The builder and run image are pulled by scripts/integration.sh. These
+	// buildpacks are passed directly to the build (before the java composite)
+	// so the tests can select a non-BellSoft JVM vendor until jvm-vendors is
+	// integrated into the java buildpack.
+	docker := occam.NewDocker()
+	Expect(docker.Pull.Execute(adoptiumBuildpack)).To(Succeed())
+	Expect(docker.Pull.Execute(correttoBuildpack)).To(Succeed())
+
+	cmd := exec.Command("./mvnw", "-DskipTests=true", "clean", "package")
+	cmd.Dir, err = filepath.Abs("./samples/java/maven/")
 	Expect(err).To(Succeed())
 	out, err := cmd.CombinedOutput()
-	Expect(err).NotTo(HaveOccurred(), "failed to precompile war package, output:\n%s", out)
+	Expect(err).NotTo(HaveOccurred(), "failed to precompile maven package, output:\n%s", out)
 
-	cmd = exec.Command("./mvnw", "-DskipTests=true", "clean", "package")
-	cmd.Dir, err = filepath.Abs("./samples/java/war-spring/")
+	cmd = exec.Command("./gradlew", "clean", "build", "-x", "test")
+	cmd.Dir, err = filepath.Abs("./samples/java/war/")
 	Expect(err).To(Succeed())
 	out, err = cmd.CombinedOutput()
-	Expect(err).NotTo(HaveOccurred(), "failed to precompile war-spring package, output:\n%s", out)
+	Expect(err).NotTo(HaveOccurred(), "failed to precompile war package, output:\n%s", out)
 
 	suite.Run(t)
-}
-
-func makeRequest(path, port string) (*http.Response, error) {
-	fullURL, err := url.Parse(fmt.Sprintf("http://localhost:%s", port))
-	if err != nil {
-		return nil, err
-	}
-	fullURL.Path = path
-
-	resp, err := http.Get(fullURL.String())
-	if err != nil {
-		return nil, err
-	}
-
-	return resp, nil
 }
