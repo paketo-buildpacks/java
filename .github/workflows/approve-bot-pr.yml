@@ -75,5 +75,5 @@ jobs:
       run: |
         gh pr merge "${PR_NUMBER}" --auto --rebase
       env:
-        GITHUB_TOKEN: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAKETO_BOT_REVIEWER_GITHUB_TOKEN }}
         PR_NUMBER: ${{ needs.download.outputs.pr-number }}
