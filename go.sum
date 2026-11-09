@@ -36,8 +36,8 @@ github.com/docker/go-units v0.5.0 h1:69rxXcBk27SvSaaxTtLh/8llcHD8vYHT7WSdRZ/jvr4
 github.com/docker/go-units v0.5.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
 github.com/dsnet/compress v0.0.2-0.20230904184137-39efe44ab707 h1:2tV76y6Q9BB+NEBasnqvs7e49aEBFI8ejC89PSnWH+4=
 github.com/dsnet/compress v0.0.2-0.20230904184137-39efe44ab707/go.mod h1:qssHWj60/X5sZFNxpG4HBPDHVqxNm4DfnCKgrbZOT+s=
-github.com/ebitengine/purego v0.11.2 h1:WWiTx8rD8zYdOwSj8O/NiNbsOvSAgJMTlyV1XlbUSeU=
-github.com/ebitengine/purego v0.11.2/go.mod h1:DCHPP08djqhNSoTfImcnHYQRZmd0qhakvrozqaEYhGQ=
+github.com/ebitengine/purego v0.11.3 h1:OB+JLpdm7ioymhyA+6s5kbb/uOuYycAgL8NNTFc5MLg=
+github.com/ebitengine/purego v0.11.3/go.mod h1:DCHPP08djqhNSoTfImcnHYQRZmd0qhakvrozqaEYhGQ=
 github.com/felixge/httpsnoop v1.1.0 h1:3YtUj32ZZkqZtt3sZZsClsymw/QDuVfpNhoA31zeORc=
 github.com/felixge/httpsnoop v1.1.0/go.mod h1:Zqxgdd+1Rkcz8euOqdr7lqgCRJztwr5hp9vDSi5UZCE=
 github.com/gabriel-vasile/mimetype v1.4.16 h1:5izNFuvA37st1dDRAcA7TtmngBmRgiIPDmTtiEvjx1E=
@@ -98,8 +98,8 @@ github.com/paketo-buildpacks/freezer v0.2.3 h1:nkMNtRFxStXauh/IJdy+2Gc11tJNcfkg7
 github.com/paketo-buildpacks/freezer v0.2.3/go.mod h1:sVvsjcmT+ee5TTcTfQv0CcY8qtM6+XVdzp0CIvMDTwM=
 github.com/paketo-buildpacks/occam v0.31.4 h1:waJPx4kgzg/NRudzzu+xyophMkRCf8BhjJfIi3ZPsaE=
 github.com/paketo-buildpacks/occam v0.31.4/go.mod h1:Lszw5n4w5+OiH/PvHWTNB6QLPCra7WXVsBumN5/omoI=
-github.com/paketo-buildpacks/packit/v2 v2.25.8 h1:2NSZrd93cN27J4XXgVXyscXUGUkFanbzDVpKIYu6j50=
-github.com/paketo-buildpacks/packit/v2 v2.25.8/go.mod h1:GXZDiF4DFZTwcxmy52u6IP2xDsmpT2394tYosmNFcGk=
+github.com/paketo-buildpacks/packit/v2 v2.26.0 h1:0diJf+hTqnIDkAFIHkZCtbmHuooh9oFUFQeoqj3tlqM=
+github.com/paketo-buildpacks/packit/v2 v2.26.0/go.mod h1:Pw2AAT0sj4muE7Hptl7HWlA7tz84r7r0mnsKlcTit48=
 github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=
 github.com/power-devops/perfstat v0.0.0-20260916203055-22a1a467d9f0 h1:XA01Vk/wv9YikCi1V51yRzIHPMT5of9+cMpZoZvDn/M=
 github.com/power-devops/perfstat v0.0.0-20260916203055-22a1a467d9f0/go.mod h1:OmDBASR4679mdNQnz2pUhc2G8CO2JrUAVFDRBDP/hJE=
