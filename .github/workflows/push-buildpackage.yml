@@ -73,7 +73,7 @@ jobs:
         echo "push_to_gcr=${push_to_gcr}" >> "$GITHUB_OUTPUT"
 
     - name: Install yj and crane
-      uses: buildpacks/github-actions/setup-tools@af8c06ccd592e27001cbf78083dcc9b47aa6652a # v6.1.1
+      uses: buildpacks/github-actions/setup-tools@50b58314ff7858c48496a3fee25308c8a18eae79 # v6.2.3
 
     - name: Validate version
       env:
@@ -87,14 +87,14 @@ jobs:
         fi
 
     - name: Docker login docker.io
-      uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
+      uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
       with:
         username: ${{ env.DOCKERHUB_USERNAME }}
         password: ${{ env.DOCKERHUB_PASSWORD }}
         registry: ${{ env.DOCKERHUB_REGISTRY }}
 
     - name: Docker login gcr.io
-      uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
+      uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
       if: ${{ steps.parse_configs.outputs.push_to_gcr == 'true' }}
       with:
         username: ${{ env.GCR_USERNAME }}
