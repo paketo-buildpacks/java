@@ -39,7 +39,7 @@ api = "0.7"
   [[order.group]]
     id = "paketo-buildpacks/syft"
     optional = true
-    version = "2.43.6"
+    version = "2.44.0"
 
   [[order.group]]
     id = "paketo-buildpacks/leiningen"
