@@ -58,7 +58,7 @@ func testTomee(t *testing.T, context spec.G, it spec.S) {
 				WithBuildpacks(javaBuildpack).
 				WithEnv(map[string]string{
 					"BP_JAVA_APP_SERVER": "tomee",
-					"BP_TOMEE_VERSION":   "10.2",
+					"BP_TOMEE_VERSION":   "10.*",
 				}).
 				WithTrustBuilder().
 				WithPullPolicy("never").
