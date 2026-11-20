@@ -50,7 +50,7 @@ uri = 'docker://docker.io/paketobuildpacks/liberty:7.2.7'
 uri = 'docker://docker.io/paketobuildpacks/dist-zip:5.14.7'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/spring-boot:5.40.7'
+uri = 'docker://docker.io/paketobuildpacks/spring-boot:5.41.0'
 
 [[dependencies]]
 uri = 'docker://docker.io/paketobuildpacks/procfile:5.15.9'

@@ -97,7 +97,7 @@ optional = true
 
 [[order.group]]
 id = 'paketo-buildpacks/spring-boot'
-version = '5.40.7'
+version = '5.41.0'
 optional = true
 
 [[order.group]]
