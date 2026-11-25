@@ -2,25 +2,25 @@
 uri = 'build/buildpack.tgz'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/ca-certificates:3.14.7'
+uri = 'docker://docker.io/paketobuildpacks/ca-certificates:3.14.8'
 
 [[dependencies]]
 uri = 'docker://docker.io/paketobuildpacks/bellsoft-liberica:11.10.6'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/yarn:2.5.7'
+uri = 'docker://docker.io/paketobuildpacks/yarn:2.6.0'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/node-engine:8.12.3'
+uri = 'docker://docker.io/paketobuildpacks/node-engine:8.12.4'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/syft:2.44.1'
+uri = 'docker://docker.io/paketobuildpacks/syft:2.44.2'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/leiningen:4.17.9'
+uri = 'docker://docker.io/paketobuildpacks/leiningen:4.17.10'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/clojure-tools:2.19.8'
+uri = 'docker://docker.io/paketobuildpacks/clojure-tools:2.19.9'
 
 [[dependencies]]
 uri = 'docker://docker.io/paketobuildpacks/gradle:8.10.0'
@@ -32,52 +32,52 @@ uri = 'docker://docker.io/paketobuildpacks/maven:6.26.0'
 uri = 'docker://docker.io/paketobuildpacks/sbt:6.25.4'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/watchexec:3.11.8'
+uri = 'docker://docker.io/paketobuildpacks/watchexec:3.11.9'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/executable-jar:6.17.8'
+uri = 'docker://docker.io/paketobuildpacks/executable-jar:6.17.9'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/apache-tomcat:8.12.8'
+uri = 'docker://docker.io/paketobuildpacks/apache-tomcat:8.12.9'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/apache-tomee:1.22.0'
+uri = 'docker://docker.io/paketobuildpacks/apache-tomee:1.22.1'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/liberty:7.2.7'
+uri = 'docker://docker.io/paketobuildpacks/liberty:7.2.8'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/dist-zip:5.14.7'
+uri = 'docker://docker.io/paketobuildpacks/dist-zip:5.14.8'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/spring-boot:5.41.0'
+uri = 'docker://docker.io/paketobuildpacks/spring-boot:5.41.1'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/procfile:5.15.9'
+uri = 'docker://docker.io/paketobuildpacks/procfile:5.15.10'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/jattach:1.13.9'
+uri = 'docker://docker.io/paketobuildpacks/jattach:1.13.10'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/azure-application-insights:6.3.5'
+uri = 'docker://docker.io/paketobuildpacks/azure-application-insights:6.3.6'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/google-stackdriver:10.3.4'
+uri = 'docker://docker.io/paketobuildpacks/google-stackdriver:10.3.5'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/datadog:6.15.4'
+uri = 'docker://docker.io/paketobuildpacks/datadog:6.15.5'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/java-memory-assistant:1.12.8'
+uri = 'docker://docker.io/paketobuildpacks/java-memory-assistant:1.12.9'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/encrypt-at-rest:4.13.7'
+uri = 'docker://docker.io/paketobuildpacks/encrypt-at-rest:4.13.8'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/environment-variables:4.12.4'
+uri = 'docker://docker.io/paketobuildpacks/environment-variables:4.12.5'
 
 [[dependencies]]
-uri = 'docker://docker.io/paketobuildpacks/image-labels:4.14.8'
+uri = 'docker://docker.io/paketobuildpacks/image-labels:4.14.9'
 
 [[targets]]
 os = 'linux'
